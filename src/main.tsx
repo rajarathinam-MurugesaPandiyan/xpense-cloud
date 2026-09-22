@@ -1,0 +1,22 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./index.scss";
+import { ThemeProvider } from "./context/ThemeProvider";
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+  throw new Error("Failed to find root element");
+}
+
+createRoot(rootElement).render(
+  <StrictMode>
+    <ThemeProvider>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  </StrictMode>,
+);
+

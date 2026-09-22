@@ -1,0 +1,138 @@
+.section {
+  padding: 100px 0;
+  position: relative;
+  background: var(--bg-app);
+  scroll-margin-top: 90px;
+}
+
+.headerWrapper {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 50px;
+}
+
+.faqHeaderWrapper {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 50px;
+  scroll-margin-top: 90px;
+}
+
+.heading {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.subheading {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 90px;
+}
+
+.testimonialCard {
+  padding: 30px;
+  border-radius: 22px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+}
+
+.starsRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.commentText {
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.authorRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.authorName {
+  font-weight: 700;
+  font-size: 0.94rem;
+  color: var(--text-primary);
+}
+
+.authorRole {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.sourceBadge {
+  font-size: 0.72rem;
+  color: var(--income);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--income-bg);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--income-border);
+}
+
+.faqContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  border-radius: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.faqButton {
+  width: 100%;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  gap: 16px;
+}
+
+.faqAnswer {
+  padding: 0 24px 20px;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}

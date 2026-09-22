@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+/* ==========================================================================
+   XPENSE CLOUD DESIGN SYSTEM: "Google Pay Inspired Blue & Clean Surfaces"
+   Clean, accessible, high-trust FinTech interface with Poppins typography
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Typography */
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-numeric: 'Poppins', -apple-system, BlinkMacSystemFont, monospace, sans-serif;
+
+  /* 1. Light Mode (Default) Surfaces & Canvas */
+  --bg-app: #F8FAFC;              /* Clean Google neutral surface */
+  --bg-surface: #FFFFFF;          /* Pure Crisp White */
+  --bg-surface-elevated: #F0F4F9; /* Google Clean Container */
+  --border-color: #E0E2EC;        /* Clean subtle hairline border */
+  --border-subtle: #EDF0F7;
+  --border-highlight: #CBD2E1;
+
+  /* Text & Content Tokens */
+  --text-primary: #1F1F1F;        /* Deep Charcoal */
+  --text-secondary: #444746;      /* Google Muted Grey */
+  --text-muted: #74777F;          /* Slate 400 */
+  --text-inverse: #FFFFFF;
+
+  /* Brand & Accent Colors (Google Pay Blue) */
+  --brand-primary: #0B57D0;       /* Classic Google Blue */
+  --brand-primary-light: #1A73E8; /* Vibrant Google Blue */
+  --accent: #0B57D0;              /* Google Blue */
+  --accent-light: #D3E3FD;        /* Soft Google Blue Chip / Container */
+  --accent-glow: rgba(11, 87, 208, 0.22);
+  --accent-hover: #0842A0;
+
+  /* Google 4-Color Icon Palette */
+  --google-blue: #1A73E8;
+  --google-red: #EA4335;
+  --google-yellow: #F9AB00;
+  --google-green: #1E8E3E;
+
+  /* Financial Semantics */
+  --income: #059669;              /* Emerald 600 */
+  --income-luminous: #34D399;     /* Emerald 400 */
+  --income-glow: #34D399;
+  --income-bg: rgba(5, 150, 105, 0.12);
+  --income-border: rgba(5, 150, 105, 0.24);
+
+  --expense: #F43F5E;             /* Coral Rose — avoids panic/alarm fatigue */
+  --expense-luminous: #FB7185;    /* Rose 400 */
+  --expense-glow: #FB7185;
+  --expense-bg: rgba(244, 63, 94, 0.12);
+  --expense-border: rgba(244, 63, 94, 0.24);
+
+  /* Hero Card Gradient & Shadows (Google Blue Gradient) */
+  --hero-gradient: linear-gradient(135deg, #1A73E8 0%, #0B57D0 50%, #0842A0 100%);
+  --hero-shadow: 0 20px 35px -10px rgba(11, 87, 208, 0.35);
+  --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 16px 32px -4px rgba(11, 87, 208, 0.12), 0 4px 8px rgba(15, 23, 42, 0.04);
+  --shadow-dropdown: 0 10px 25px -5px rgba(15, 23, 42, 0.12);
+
+  /* Glassmorphism Surface (Light) */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(224, 226, 236, 0.85);
+
+  /* Radii Geometry */
+  --radius-sm: 8px;
+  --radius-input: 14px;
+  --radius-button: 14px;
+  --radius-card: 20px;
+  --radius-hero: 24px;
+  --radius-pill: 9999px;
+
+  /* Backward Compatibility Aliases for Existing Components */
+  --bg-dark: var(--bg-app);
+  --bg-card: var(--bg-surface);
+  --bg-card-hover: var(--bg-surface-elevated);
+  --bg-input: var(--bg-surface-elevated);
+  --bg-modal: var(--bg-surface);
+  --accent-primary: var(--brand-primary);
+  --accent-primary-hover: var(--accent-hover);
+  --accent-subtle: var(--accent-light);
+  --color-income: var(--income);
+  --color-expense: var(--expense);
+  --text-main: var(--text-primary);
+  --text-subtle: var(--text-muted);
+}
+
+/* ==========================================================================
+   2. Dark Mode: Google Dark Theme (`[data-theme="dark"]` & `.dark`)
+   ========================================================================== */
+[data-theme="dark"], .dark {
+  color-scheme: dark;
+
+  /* Surfaces & Canvas */
+  --bg-app: #111318;              /* Google Dark Neutral Background */
+  --bg-surface: #1E2024;          /* Google Dark Surface */
+  --bg-surface-elevated: #282A2F; /* Google Dark Elevated Surface */
+  --border-color: #333842;        /* Clean Dark Hairline Border */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-highlight: #4B515D;
+
+  /* Typography */
+  --text-primary: #E2E2E6;        /* Clean Off-White */
+  --text-secondary: #C4C6D0;      /* Light Grey Slate */
+  --text-muted: #8E919A;
+  --text-inverse: #111318;
+
+  /* Brand & Accents (Google Dark Mode High Contrast Blue) */
+  --brand-primary: #A8C7FA;       /* Google Dark Primary Accent */
+  --brand-primary-light: #C2E7FF;
+  --accent: #A8C7FA;
+  --accent-light: #0842A0;
+  --accent-glow: rgba(168, 199, 250, 0.3);
+  --accent-hover: #C2E7FF;
+
+  /* Google 4-Color Dark Palette */
+  --google-blue: #8AB4F8;
+  --google-red: #F28B82;
+  --google-yellow: #FDD663;
+  --google-green: #81C995;
+
+  /* Financial Semantics */
+  --income: #81C995;              /* Google Green Dark */
+  --income-luminous: #34D399;
+  --income-glow: #34D399;
+  --income-bg: rgba(52, 211, 153, 0.15);
+  --income-border: rgba(52, 211, 153, 0.28);
+
+  --expense: #FB7185;             /* Rose 400 */
+  --expense-luminous: #FDA4AF;
+  --expense-glow: #FB7185;
+  --expense-bg: rgba(251, 113, 133, 0.15);
+  --expense-border: rgba(251, 113, 133, 0.28);
+
+  /* Hero Card Gradient & Shadows (Deep Google Navy) */
+  --hero-gradient: linear-gradient(135deg, #1A73E8 0%, #0B57D0 50%, #0842A0 100%);
+  --hero-shadow: 0 20px 40px -10px rgba(11, 87, 208, 0.45);
+  --shadow-card: 0 8px 24px -4px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 16px 36px -6px rgba(11, 87, 208, 0.25), 0 4px 10px rgba(0, 0, 0, 0.4);
+  --shadow-dropdown: 0 12px 30px -4px rgba(0, 0, 0, 0.6);
+
+  /* Glassmorphism Surface (Dark) */
+  --glass-bg: rgba(30, 32, 36, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.10);
+
+  /* Backward Compatibility Aliases */
+  --bg-dark: var(--bg-app);
+  --bg-card: var(--bg-surface);
+  --bg-card-hover: var(--bg-surface-elevated);
+  --bg-input: #15181E;
+  --bg-modal: var(--bg-surface);
+  --accent-primary: var(--brand-primary);
+  --accent-primary-hover: var(--accent-hover);
+  --accent-subtle: rgba(168, 199, 250, 0.18);
+  --color-income: var(--income);
+  --color-expense: var(--expense);
+  --text-main: var(--text-primary);
+  --text-subtle: var(--text-muted);
+}
+
+/* ==========================================================================
+   Smooth Theme Transitions
+   ========================================================================== */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 0.25s ease, 
+              border-color 0.25s ease, 
+              color 0.25s ease, 
+              box-shadow 0.25s ease,
+              fill 0.25s ease !important;
+}
+
+/* ==========================================================================
+   Typography Utilities (Poppins everywhere)
+   ========================================================================== */
+body, button, input, select, textarea {
+  font-family: var(--font-sans);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-numeric {
+  font-family: var(--font-numeric);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================================================
+   FinTech Surface & Card Utilities
+   ========================================================================== */
+
+.xpense-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
+}
+
+.xpense-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-highlight);
+}
+
+/* Master Balance Hero Card */
+.xpense-hero-card {
+  background: var(--hero-gradient);
+  border-radius: var(--radius-hero);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  box-shadow: var(--hero-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.xpense-hero-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 45px -8px rgba(11, 87, 208, 0.5);
+}
+
+/* Glassmorphic FinTech Card & Overlay Panel */
+.xpense-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+}
+
+/* ==========================================================================
+   Financial Semantic Badges & Chips
+   ========================================================================== */
+.financial-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-family: var(--font-numeric);
+}
+
+.financial-chip.chip-income {
+  background: var(--income-bg);
+  color: var(--income);
+  border: 1px solid var(--income-border);
+}
+
+.financial-chip.chip-expense {
+  background: var(--expense-bg);
+  color: var(--expense);
+  border: 1px solid var(--expense-border);
+}
+
+.financial-chip.chip-neutral {
+  background: var(--bg-surface-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge-pill-accent {
+  background: var(--accent-light);
+  color: var(--brand-primary);
+  border: 1px solid rgba(11, 87, 208, 0.2);
+}
+
+/* ==========================================================================
+   Button Hierarchy (Google Pay Inspired)
+   ========================================================================== */
+.btn-primary {
+  background: var(--brand-primary);
+  color: #FFFFFF !important;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-button);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(11, 87, 208, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 6px 18px rgba(11, 87, 208, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary) !important;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-button);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--border-color);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary) !important;
+  border: 1.5px solid var(--border-color);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--brand-primary);
+  color: var(--brand-primary) !important;
+  background: var(--accent-light);
+}
+
+/* ==========================================================================
+   Input & Form Elements
+   ========================================================================== */
+.xpense-input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-input);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.xpense-input:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.xpense-input::placeholder {
+  color: var(--text-muted);
+}

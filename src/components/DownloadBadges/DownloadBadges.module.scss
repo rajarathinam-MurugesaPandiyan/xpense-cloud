@@ -1,0 +1,162 @@
+.section {
+  padding: 100px 0;
+  position: relative;
+  background: var(--bg-app);
+}
+
+.cardWrapper {
+  padding: 52px 44px;
+  border-radius: 28px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+.badgePill {
+  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.subheading {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+
+.badgesRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.storeBadge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px;
+  border-radius: 16px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  text-decoration: none;
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-color: var(--brand-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -4px rgba(11, 87, 208, 0.25);
+  }
+}
+
+.badgeStoreLabel {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.badgeStoreName {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.packageRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.packageCode {
+  color: var(--brand-primary);
+  background: var(--bg-surface-elevated);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--brand-primary);
+  }
+}
+
+.qrContainer {
+  padding: 32px;
+  border-radius: 22px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.qrBadge {
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  border-radius: 99px;
+  background: var(--accent-light);
+  border: 1px solid var(--border-subtle);
+  color: var(--brand-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.qrCodeBox {
+  width: 160px;
+  height: 160px;
+  border-radius: 18px;
+  background: #FFFFFF;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.qrText {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  max-width: 240px;
+}

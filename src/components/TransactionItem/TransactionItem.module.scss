@@ -1,0 +1,216 @@
+.transactionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(0);
+  box-shadow: none;
+  gap: 16px;
+  cursor: pointer;
+
+  &.isHovered {
+    background: var(--bg-surface-elevated);
+    border-color: var(--border-highlight);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-card-hover);
+
+    .iconBox {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.leftContent {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.iconBox {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+
+  &.income {
+    background: var(--income-bg);
+    border: 1px solid var(--income-border);
+    color: var(--income);
+  }
+
+  &.expense {
+    background: var(--expense-bg);
+    border: 1px solid var(--expense-border);
+    color: var(--expense);
+  }
+}
+
+.metadataCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.titleText {
+  font-weight: 600;
+  font-size: 0.94rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.categoryBadge {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.subRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.rightContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.amountText {
+  font-family: var(--font-numeric, var(--font-sans));
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  &.income {
+    color: var(--income);
+  }
+
+  &.expense {
+    color: var(--expense);
+  }
+}
+
+.statusCleared {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.statusPending {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  color: #F59E0B;
+}
+
+/* Transaction List wrapper */
+.listCard {
+  padding: 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+}
+
+.listHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.listHeading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.listSubheading {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin: 2px 0 0;
+}
+
+.filterPills {
+  display: inline-flex;
+  background: var(--bg-surface-elevated);
+  padding: 3px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-color);
+  gap: 2px;
+}
+
+.filterButton {
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  box-shadow: none;
+  transition: all 0.2s ease;
+
+  &.filterActive {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-card);
+  }
+
+  &.filterIncomeActive {
+    background: var(--bg-surface);
+    color: var(--income);
+    box-shadow: var(--shadow-card);
+  }
+
+  &.filterExpenseActive {
+    background: var(--bg-surface);
+    color: var(--expense);
+    box-shadow: var(--shadow-card);
+  }
+}
+
+.rowsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

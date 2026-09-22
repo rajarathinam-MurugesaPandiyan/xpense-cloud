@@ -1,0 +1,129 @@
+.showcaseSection {
+  padding: 100px 0;
+  background: var(--bg-app);
+  position: relative;
+}
+
+.headerContainer {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 48px;
+}
+
+.badgePill {
+  margin-bottom: 16px;
+  padding: 6px 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(11, 87, 208, 0.12);
+}
+
+.title {
+  font-size: clamp(2.2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.6px;
+  line-height: 1.2;
+}
+
+.titleGradient {
+  background: linear-gradient(135deg, #1A73E8 0%, #0B57D0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.08rem;
+  line-height: 1.6;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.pillBar {
+  display: inline-flex;
+  background: var(--bg-surface);
+  padding: 6px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  margin-top: 32px;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+}
+
+.tabBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 14px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  background: transparent;
+  box-shadow: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    color: var(--text-primary);
+    background: var(--bg-surface-elevated);
+  }
+
+  &.activeTab {
+    color: #FFFFFF;
+    background: linear-gradient(135deg, #1A73E8 0%, #0B57D0 100%);
+    box-shadow: 0 4px 14px rgba(11, 87, 208, 0.35);
+
+    &:hover {
+      color: #FFFFFF;
+      background: linear-gradient(135deg, #1A73E8 0%, #0B57D0 100%);
+    }
+  }
+}
+
+.phoneStage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.phoneGlow {
+  position: absolute;
+  width: 420px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(11, 87, 208, 0.18) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.phoneFrame {
+  position: relative;
+  width: 345px;
+  height: 680px;
+  border-radius: 50px;
+  background: #0D0F13;
+  border: 11px solid #20242C;
+  box-shadow: 0 32px 84px -16px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.statusBar {
+  height: 42px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #E2E2E6;
+  font-size: 0.78rem;
+  font-weight: 700;
+  z-index: 10;
+  padding-top: 6px;
+}

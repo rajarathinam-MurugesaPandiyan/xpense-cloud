@@ -1,0 +1,149 @@
+.footer {
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  padding-top: 70px;
+  padding-bottom: 40px;
+  position: relative;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 48px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoWrapper {
+  margin-bottom: 16px;
+}
+
+.brandDesc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  font-size: 0.78rem;
+  color: var(--brand-primary);
+  font-weight: 600;
+  width: fit-content;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
+}
+
+.columnHeading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.footerLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--brand-primary);
+  }
+}
+
+.footerButtonLink {
+  text-align: left;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    color: var(--brand-primary);
+  }
+}
+
+.bottomBar {
+  border-top: 1px solid var(--border-color);
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.packageCode {
+  color: var(--brand-primary);
+  background: var(--accent-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.appearanceGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.appearanceLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.socialsGroup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.socialLink {
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--brand-primary);
+  }
+}
