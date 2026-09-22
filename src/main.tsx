@@ -13,10 +13,11 @@ if (!rootElement) {
 createRoot(rootElement).render(
   <StrictMode>
     <ThemeProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </ThemeProvider>
+
   </StrictMode>,
 );
 
