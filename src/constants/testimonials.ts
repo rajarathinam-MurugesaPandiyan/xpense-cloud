@@ -22,7 +22,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
   {
     name: 'David Chen',
     role: 'Freelance Software Developer',
-    comment: 'Finally an expense app that matches my Flutter mobile app dark theme! The Poppins font, Lottie animations, and instant CSV exports for tax season are top notch.',
+    comment: 'Finally an expense app that matches my Flutter mobile app dark theme! The Plus Jakarta Sans font, Lottie animations, and instant CSV exports for tax season are top notch.',
     stars: 5,
     source: 'App Store Verified'
   },
