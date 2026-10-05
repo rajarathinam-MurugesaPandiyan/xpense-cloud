@@ -30,7 +30,7 @@ import {
   Smartphone,
   AlertTriangle,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { LottieLogo } from "../LottieLogo";
 import { ThemeToggle } from "../ThemeToggle";
 import { PRIVACY_SECTIONS, PRIVACY_POLICY_METADATA } from "../../constants";
@@ -976,7 +976,18 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                 </p>
 
                 <div className={styles.infoCallout}>
-                  <strong>Account deletion URL:</strong> [TO ADD]
+                  <strong>Account deletion URL:</strong>{" "}
+                  <Link
+                    to={ROUTES.DELETE_ACCOUNT}
+                    style={{
+                      color: "var(--brand-primary)",
+                      fontWeight: 600,
+                      textDecoration: "underline",
+                      marginLeft: 4,
+                    }}
+                  >
+                    https://xpense-cloud.in/delete-account
+                  </Link>
                 </div>
               </article>
 

@@ -110,6 +110,9 @@ export const Footer: React.FC<FooterProps> = ({
               <Link to={ROUTES.TERMS} className={styles.footerLink}>
                 Terms & Conditions
               </Link>
+              <Link to={ROUTES.DELETE_ACCOUNT} className={styles.footerLink}>
+                Delete Account & Data
+              </Link>
               <a href="#" className={styles.footerLink}>
                 AES-256 Encryption Spec
               </a>

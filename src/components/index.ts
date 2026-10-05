@@ -14,3 +14,4 @@ export * from "./Footer";
 export * from "./DemoModal";
 export * from "./PrivacyPolicy";
 export * from "./TermsAndConditions";
+export * from "./DeleteAccount";

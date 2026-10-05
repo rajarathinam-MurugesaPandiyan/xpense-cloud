@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Navbar, Footer, FloatingThemeWidget, DemoModal } from "./components";
 import { ScrollToTop } from "./components/ScrollToTop";
-import { HomePage, PrivacyPolicyPage, TermsPage, NotFoundPage } from "./pages";
+import { HomePage, PrivacyPolicyPage, TermsPage, DeleteAccountPage, NotFoundPage } from "./pages";
 import { ROUTES } from "./routes";
 import styles from "./App.module.scss";
 
@@ -13,7 +13,8 @@ export const App: React.FC = () => {
 
   const isStandaloneLegal =
     location.pathname === ROUTES.PRIVACY_POLICY ||
-    location.pathname === ROUTES.TERMS;
+    location.pathname === ROUTES.TERMS ||
+    location.pathname === ROUTES.DELETE_ACCOUNT;
 
   const scrollToDownload = () => {
     if (location.pathname !== ROUTES.HOME) {
@@ -67,6 +68,10 @@ export const App: React.FC = () => {
           <Route
             path={ROUTES.TERMS}
             element={<TermsPage onOpenDemo={handleOpenDemo} />}
+          />
+          <Route
+            path={ROUTES.DELETE_ACCOUNT}
+            element={<DeleteAccountPage onOpenDemo={handleOpenDemo} />}
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
