@@ -13,9 +13,11 @@ import styles from './InteractiveDemo.module.scss';
 
 export interface InteractiveDemoProps {
   onOpenDemo?: () => void;
+  onOpenFeedback?: () => void;
 }
 
-export const InteractiveDemo: React.FC<InteractiveDemoProps> = ({ onOpenDemo }) => {
+export const InteractiveDemo: React.FC<InteractiveDemoProps> = ({ onOpenDemo, onOpenFeedback }) => {
+  const triggerFeedback = onOpenFeedback || onOpenDemo;
   // Feature Tab Navigation
   const [activeTab, setActiveTab] = useState<'categories' | 'reminders' | 'subscriptions' | 'trip'>('categories');
   // 1. Categories State
@@ -1071,8 +1073,8 @@ export const InteractiveDemo: React.FC<InteractiveDemoProps> = ({ onOpenDemo }) 
           </div>
         )}
 
-        {/* Dedicated Demo Request Banner */}
-        {onOpenDemo && (
+        {/* Dedicated Feedback Banner */}
+        {triggerFeedback && (
           <div style={{
             marginTop: '44px',
             padding: '24px 28px',
@@ -1090,21 +1092,21 @@ export const InteractiveDemo: React.FC<InteractiveDemoProps> = ({ onOpenDemo }) 
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
                 <Sparkles size={16} style={{ color: 'var(--brand-primary)' }} />
                 <span style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                  Looking for an interactive walkthrough or custom integration?
+                  Have thoughts or ideas about this interactive demo?
                 </span>
               </div>
               <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-                Our engineering team offers 1-on-1 personalized demo sessions. Secured input protection (no code brackets, 256 char limit).
+                Help us refine XPense Cloud. Send your feature requests or comments directly to our Go cloud service.
               </p>
             </div>
             <button
               type="button"
-              onClick={onOpenDemo}
+              onClick={triggerFeedback}
               className="btn-primary"
               style={{ padding: '10px 22px', fontSize: '0.9rem', borderRadius: '12px', flexShrink: 0 }}
             >
               <Sparkles size={15} />
-              <span>Schedule Live Demo</span>
+              <span>Share Feedback</span>
             </button>
           </div>
         )}

@@ -7,11 +7,14 @@ export interface PrivacySection {
 
 export const PRIVACY_POLICY_METADATA = {
   appName: "Xpense",
-  lastUpdated: "September 22, 2026",
-  effectiveDate: "September 22, 2026",
-  version: "2.4",
+  lastUpdated: "October 2026",
+  effectiveDate: "October 2026",
+  version: "2.5",
   supportEmail: "xpensecloud@gmail.com",
   websiteUrl: "https://xpense-cloud.in",
+  architecture: "On-Device AES-256 Hive + Cloud Sync",
+  complianceNotice:
+    "Official Privacy Policy • Google Play & App Store Compliant",
 };
 
 export const PRIVACY_SECTIONS: PrivacySection[] = [
@@ -54,7 +57,7 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
   {
     id: "advertising",
     number: "7",
-    title: "Advertising",
+    title: "Advertising (Google AdMob)",
     iconName: "Megaphone",
   },
   {
@@ -78,7 +81,7 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
   {
     id: "data-sharing",
     number: "11",
-    title: "Data Sharing",
+    title: "Data Sharing & Disclosure",
     iconName: "Users",
   },
   {
@@ -88,52 +91,69 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
     iconName: "ShieldCheck",
   },
   {
-    id: "data-retention",
+    id: "trip-integrity",
     number: "13",
+    title: "Group Expenses & Trip Member Integrity",
+    iconName: "Users2",
+  },
+  {
+    id: "device-permissions",
+    number: "14",
+    title: "Device Permissions",
+    iconName: "Smartphone",
+  },
+  {
+    id: "data-retention",
+    number: "15",
     title: "Data Retention",
     iconName: "Clock",
   },
   {
     id: "account-deletion",
-    number: "14",
+    number: "16",
     title: "Account & Data Deletion",
     iconName: "Trash2",
   },
   {
     id: "user-rights",
-    number: "15",
-    title: "Your Choices and Rights",
+    number: "17",
+    title: "Your Choices & Privacy Rights",
     iconName: "UserCheck",
   },
   {
     id: "children-privacy",
-    number: "16",
+    number: "18",
     title: "Children's Privacy",
     iconName: "Baby",
   },
   {
     id: "international-transfers",
-    number: "17",
+    number: "19",
     title: "International Data Processing",
     iconName: "Globe",
   },
   {
     id: "cookies",
-    number: "18",
-    title: "Cookies & Similar Technologies",
+    number: "20",
+    title: "Cookies & Local Identifiers",
     iconName: "Cookie",
   },
   {
     id: "policy-changes",
-    number: "19",
+    number: "21",
     title: "Changes to This Privacy Policy",
     iconName: "RefreshCw",
   },
-  { id: "contact-us", number: "20", title: "Contact Us", iconName: "Mail" },
+  {
+    id: "contact-us",
+    number: "22",
+    title: "Contact Us",
+    iconName: "Mail",
+  },
   {
     id: "important-notice",
-    number: "21",
-    title: "Important Notice",
+    number: "23",
+    title: "Important Compliance Notice",
     iconName: "AlertCircle",
   },
 ];

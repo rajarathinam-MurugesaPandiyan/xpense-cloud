@@ -12,6 +12,7 @@ export * from "./DownloadBadges";
 export * from "./TestimonialsFAQ";
 export * from "./Footer";
 export * from "./DemoModal";
+export * from "./FeedbackModal";
 export * from "./PrivacyPolicy";
 export * from "./TermsAndConditions";
 export * from "./DeleteAccount";

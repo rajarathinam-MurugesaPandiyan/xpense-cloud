@@ -167,3 +167,48 @@ export function validateDescription(desc: string): ValidationResult {
 
   return { isValid: true, sanitizedValue: sanitizeText(trimmed) };
 }
+
+/**
+ * Validates Feedback Description:
+ * - Up to 1000 characters
+ * - Blocks forbidden code braces and injection vectors
+ * - Minimum 5 characters
+ */
+export function validateFeedbackDescription(desc: string, maxLen = 1000): ValidationResult {
+  const trimmed = desc.trim();
+
+  if (!trimmed) {
+    return { isValid: false, error: 'Please share your feedback or suggestion', sanitizedValue: '' };
+  }
+
+  if (FORBIDDEN_BRACES_REGEX.test(desc)) {
+    return {
+      isValid: false,
+      error: 'Security alert: Code braces { } are not permitted in feedback',
+      sanitizedValue: desc.replace(/[{}]/g, ''),
+    };
+  }
+
+  if (DANGEROUS_INJECTION_REGEX.test(desc)) {
+    return {
+      isValid: false,
+      error: 'Security alert: Code injection tokens or HTML tags are not permitted',
+      sanitizedValue: sanitizeText(desc),
+    };
+  }
+
+  if (trimmed.length < 5) {
+    return { isValid: false, error: 'Feedback must be at least 5 characters', sanitizedValue: trimmed };
+  }
+
+  if (desc.length > maxLen) {
+    return {
+      isValid: false,
+      error: `Feedback exceeds the ${maxLen}-character limit (${desc.length}/${maxLen})`,
+      sanitizedValue: desc.slice(0, maxLen),
+    };
+  }
+
+  return { isValid: true, sanitizedValue: sanitizeText(trimmed) };
+}
+

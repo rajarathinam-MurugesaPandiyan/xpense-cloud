@@ -11,19 +11,33 @@ import {
 export interface HomePageProps {
   onOpenDownload?: () => void;
   onOpenDemo?: () => void;
+  onOpenFeedback?: () => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onOpenDownload, onOpenDemo }) => {
+export const HomePage: React.FC<HomePageProps> = ({
+  onOpenDownload,
+  onOpenDemo,
+  onOpenFeedback,
+}) => {
+  const triggerFeedback = onOpenFeedback || onOpenDemo;
+
   return (
     <>
       {/* Hero Section */}
-      <Hero onOpenDownload={onOpenDownload} onOpenDemo={onOpenDemo} />
+      <Hero
+        onOpenDownload={onOpenDownload}
+        onOpenDemo={triggerFeedback}
+        onOpenFeedback={triggerFeedback}
+      />
 
       {/* Features & Architectural Factors */}
       <Features />
 
       {/* Live Interactive Expense Demo */}
-      <InteractiveDemo onOpenDemo={onOpenDemo} />
+      <InteractiveDemo
+        onOpenDemo={triggerFeedback}
+        onOpenFeedback={triggerFeedback}
+      />
 
       {/* Mobile App Showcase */}
       <MobileShowcase />

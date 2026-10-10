@@ -12,4 +12,5 @@ export * from './features';
 export * from './privacyPolicy';
 export * from './termsAndConditions';
 export * from './deleteAccount';
+export * from './appScreenshots';
 

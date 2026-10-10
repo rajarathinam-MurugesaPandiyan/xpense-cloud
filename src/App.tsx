@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { Navbar, Footer, FloatingThemeWidget, DemoModal } from "./components";
+import { Navbar, Footer, FloatingThemeWidget, FeedbackModal } from "./components";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { HomePage, PrivacyPolicyPage, TermsPage, DeleteAccountPage, NotFoundPage } from "./pages";
 import { ROUTES } from "./routes";
 import styles from "./App.module.scss";
 
 export const App: React.FC = () => {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState<boolean>(false);
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -31,12 +31,12 @@ export const App: React.FC = () => {
     }
   };
 
-  const handleOpenDemo = () => {
-    setIsDemoModalOpen(true);
+  const handleOpenFeedback = () => {
+    setIsFeedbackModalOpen(true);
   };
 
-  const handleCloseDemo = () => {
-    setIsDemoModalOpen(false);
+  const handleCloseFeedback = () => {
+    setIsFeedbackModalOpen(false);
   };
 
   return (
@@ -46,7 +46,11 @@ export const App: React.FC = () => {
 
       {/* Main landing Navbar (only displayed on non-legal pages) */}
       {!isStandaloneLegal && (
-        <Navbar onOpenDownload={scrollToDownload} onOpenDemo={handleOpenDemo} />
+        <Navbar
+          onOpenDownload={scrollToDownload}
+          onOpenFeedback={handleOpenFeedback}
+          onOpenDemo={handleOpenFeedback}
+        />
       )}
 
       {/* React Router Routes */}
@@ -57,34 +61,41 @@ export const App: React.FC = () => {
             element={
               <HomePage
                 onOpenDownload={scrollToDownload}
-                onOpenDemo={handleOpenDemo}
+                onOpenDemo={handleOpenFeedback}
               />
             }
           />
           <Route
             path={ROUTES.PRIVACY_POLICY}
-            element={<PrivacyPolicyPage onOpenDemo={handleOpenDemo} />}
+            element={<PrivacyPolicyPage onOpenDemo={handleOpenFeedback} />}
           />
           <Route
             path={ROUTES.TERMS}
-            element={<TermsPage onOpenDemo={handleOpenDemo} />}
+            element={<TermsPage onOpenDemo={handleOpenFeedback} />}
           />
           <Route
             path={ROUTES.DELETE_ACCOUNT}
-            element={<DeleteAccountPage onOpenDemo={handleOpenDemo} />}
+            element={<DeleteAccountPage onOpenDemo={handleOpenFeedback} />}
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 
       {/* Shared Footer */}
-      <Footer onOpenDownload={scrollToDownload} onOpenDemo={handleOpenDemo} />
+      <Footer
+        onOpenDownload={scrollToDownload}
+        onOpenFeedback={handleOpenFeedback}
+        onOpenDemo={handleOpenFeedback}
+      />
 
       {/* Floating Theme Switcher Dock */}
       <FloatingThemeWidget />
 
-      {/* Secured Demo Request Dialog */}
-      <DemoModal isOpen={isDemoModalOpen} onClose={handleCloseDemo} />
+      {/* Feedback Dialog posting directly to dev.xpense-cloud.in/api/v1/post */}
+      <FeedbackModal
+        isOpen={isFeedbackModalOpen}
+        onClose={handleCloseFeedback}
+      />
     </div>
   );
 };

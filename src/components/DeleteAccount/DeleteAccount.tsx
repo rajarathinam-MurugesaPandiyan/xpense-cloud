@@ -302,7 +302,7 @@ export const DeleteAccount: React.FC<DeleteAccountProps> = ({
                     borderRadius: "9999px",
                   }}
                 >
-                  <span>Request Demo</span>
+                  <span>Share Feedback</span>
                 </button>
               )}
             </div>

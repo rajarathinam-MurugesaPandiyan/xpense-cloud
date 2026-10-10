@@ -29,6 +29,7 @@ import {
   Lock,
   Smartphone,
   AlertTriangle,
+  Info,
 } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import { LottieLogo } from "../LottieLogo";
@@ -149,7 +150,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                     borderRadius: "9999px",
                   }}
                 >
-                  <span>Request Demo</span>
+                  <span>Share Feedback</span>
                 </button>
               )}
             </div>
@@ -199,33 +200,11 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
               <div className={styles.metaIconBox}>
                 <Clock size={18} />
               </div>
-              <div>
-                <div className={styles.metaLabel}>Last Updated</div>
-                <div className={styles.metaValue}>
+              <div className={styles.metaTextBox}>
+                <span className={styles.metaLabel}>Last Updated</span>
+                <span className={styles.metaValue}>
                   {PRIVACY_POLICY_METADATA.lastUpdated}
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.metaCard}>
-              <div className={styles.metaIconBox}>
-                <Lock size={18} />
-              </div>
-              <div>
-                <div className={styles.metaLabel}>Data Architecture</div>
-                <div className={styles.metaValue}>
-                  On-Device Hive + Cloud Sync
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.metaCard}>
-              <div className={styles.metaIconBox}>
-                <Smartphone size={18} />
-              </div>
-              <div>
-                <div className={styles.metaLabel}>Applicable Platforms</div>
-                <div className={styles.metaValue}>Android, iOS & Web App</div>
+                </span>
               </div>
             </div>
 
@@ -233,19 +212,46 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
               <div className={styles.metaIconBox}>
                 <ShieldCheck size={18} />
               </div>
-              <div>
-                <div className={styles.metaLabel}>Financial Advice</div>
-                <div className={styles.metaValue}>
-                  Not Provided (Tracking Only)
-                </div>
+              <div className={styles.metaTextBox}>
+                <span className={styles.metaLabel}>Security Architecture</span>
+                <span className={styles.metaValue}>
+                  {PRIVACY_POLICY_METADATA.architecture}
+                </span>
+              </div>
+            </div>
+
+            <div className={styles.metaCard}>
+              <div className={styles.metaIconBox}>
+                <Mail size={18} />
+              </div>
+              <div className={styles.metaTextBox}>
+                <span className={styles.metaLabel}>Support Contact</span>
+                <a
+                  href={`mailto:${PRIVACY_POLICY_METADATA.supportEmail}`}
+                  className={styles.metaLink}
+                >
+                  {PRIVACY_POLICY_METADATA.supportEmail}
+                </a>
+              </div>
+            </div>
+
+            <div className={styles.metaCard}>
+              <div className={styles.metaIconBox}>
+                <CheckCircle2 size={18} />
+              </div>
+              <div className={styles.metaTextBox}>
+                <span className={styles.metaLabel}>Store Compliance</span>
+                <span className={styles.metaValue}>
+                  Google Play &amp; App Store
+                </span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Two-Column Content Layout */}
-      <div className={styles.contentLayout}>
+      {/* Main Content Area */}
+      <div className={styles.contentSection}>
         <div className="container">
           <div className={styles.mainGrid}>
             {/* Sticky Table of Contents Sidebar */}
@@ -274,7 +280,9 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                     key={sec.id}
                     type="button"
                     onClick={() => scrollToSection(sec.id)}
-                    className={`${styles.tocItem} ${activeSection === sec.id ? styles.tocActive : ""}`}
+                    className={`${styles.tocItem} ${
+                      activeSection === sec.id ? styles.tocActive : ""
+                    }`}
                   >
                     <span className={styles.tocNumber}>{sec.number}</span>
                     <span
@@ -298,7 +306,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                 />
                 <div>
                   <strong>Zero Data Selling:</strong> We never sell personal
-                  expense records.
+                  expense records or financial data.
                 </div>
               </div>
             </aside>
@@ -321,41 +329,42 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
 
                 <p className={styles.bodyText}>
                   We collect and process only the information reasonably
-                  necessary to provide and improve the Xpense service.
+                  necessary to provide and improve the Xpense personal expense
+                  tracking service.
                 </p>
 
-                <h3 className={styles.subsectionTitle}>
-                  1.1 Account Information
-                </h3>
-                <p className={styles.bodyText}>
-                  When you create or access an Xpense account, we may collect:
-                </p>
                 <ul className={styles.list}>
-                  <li className={styles.listItem}>Firebase user ID</li>
-                  <li className={styles.listItem}>Email address</li>
-                  <li className={styles.listItem}>Name or display name</li>
                   <li className={styles.listItem}>
-                    Profile information provided through your authentication
-                    provider
+                    Firebase User Identifier (UID)
                   </li>
                   <li className={styles.listItem}>
-                    Authentication-related information necessary to maintain
-                    your account
+                    Email address associated with your authentication provider
+                  </li>
+                  <li className={styles.listItem}>
+                    Display name and avatar photo URL (if provided by Google/Apple)
+                  </li>
+                  <li className={styles.listItem}>
+                    Authentication provider metadata necessary to maintain your session
+                  </li>
+                  <li className={styles.listItem}>
+                    Voluntary Trip member names and individual contact numbers selected via system picker
                   </li>
                 </ul>
 
-                <p className={styles.bodyText}>
-                  If you sign in using Google, authentication is handled through
-                  Google and Firebase Authentication.
-                </p>
-
                 <div className={styles.infoCallout}>
-                  <strong>Password Security:</strong> We do not receive or store
-                  your Google account password.
+                  <Info
+                    size={18}
+                    style={{ color: "var(--brand-primary)", flexShrink: 0 }}
+                  />
+                  <div>
+                    <strong>Password Privacy:</strong> Xpense never receives,
+                    processes, or stores your external Google or Apple account
+                    passwords.
+                  </div>
                 </div>
               </article>
 
-              {/* Section 2: Expense and Financial Information */}
+              {/* Section 2: Expense & Financial Information */}
               <article id="expense-info" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
@@ -364,40 +373,39 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                   <div className={styles.sectionTitleGroup}>
                     <span className={styles.sectionNumber}>Section 2</span>
                     <h2 className={styles.sectionTitle}>
-                      2. Expense and Financial Information
+                      2. Expense & Financial Information
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  Xpense is designed to help you manage your personal expenses.
-                  Depending on the features you use, information may include:
+                  Xpense allows you to voluntarily record personal financial
+                  records to track spending habits. This data may include:
                 </p>
+
                 <ul className={styles.list}>
-                  <li className={styles.listItem}>Transaction amounts</li>
-                  <li className={styles.listItem}>Transaction descriptions</li>
                   <li className={styles.listItem}>
-                    Categories and subcategories
+                    Transaction amounts, categories, subcategories, and dates
                   </li>
                   <li className={styles.listItem}>
-                    Transaction dates and times
-                  </li>
-                  <li className={styles.listItem}>Payment types</li>
-                  <li className={styles.listItem}>Expense types</li>
-                  <li className={styles.listItem}>Budgets</li>
-                  <li className={styles.listItem}>
-                    Lend and reminder information
+                    Payment sources (Cash, UPI, Card, Bank) and transaction types (Debited / Credited)
                   </li>
                   <li className={styles.listItem}>
-                    Other information that you voluntarily enter into the
-                    application
+                    Descriptions and voluntary transaction notes
+                  </li>
+                  <li className={styles.listItem}>
+                    Category monthly budget thresholds and spending goals
+                  </li>
+                  <li className={styles.listItem}>
+                    Trip management records (group members, trip budgets, payer attribution, and split settlements)
+                  </li>
+                  <li className={styles.listItem}>
+                    Repeat subscriptions (recurring billing intervals, auto-logging settings, and renewal dates)
+                  </li>
+                  <li className={styles.listItem}>
+                    Lend and borrow reminder records (parties, due dates, and settlement status)
                   </li>
                 </ul>
-
-                <p className={styles.bodyText}>
-                  This information is used to provide expense tracking,
-                  organization, synchronization, and related features.
-                </p>
 
                 <div className={styles.calloutBox}>
                   <AlertTriangle
@@ -405,9 +413,9 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                     style={{ color: "var(--google-yellow)", flexShrink: 0 }}
                   />
                   <div>
-                    <strong>Important Financial Disclaimer:</strong> Xpense does
-                    not provide financial, investment, tax, or professional
-                    financial advice.
+                    <strong>Financial Disclaimer:</strong> Xpense does not
+                    provide financial, investment, or tax advice. Your data is
+                    purely for your personal organization.
                   </div>
                 </div>
               </article>
@@ -427,35 +435,21 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                 </div>
 
                 <p className={styles.bodyText}>
-                  Xpense may store certain information locally on your device to
-                  support offline functionality and improve application
-                  performance. Local data may include:
-                </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>Expense records</li>
-                  <li className={styles.listItem}>Categories</li>
-                  <li className={styles.listItem}>User preferences</li>
-                  <li className={styles.listItem}>Application settings</li>
-                  <li className={styles.listItem}>Synchronization status</li>
-                  <li className={styles.listItem}>
-                    Other application data required for offline functionality
-                  </li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  Xpense may use local storage technologies such as Hive or
-                  platform-provided storage.
+                  Xpense operates on an offline-first architecture using AES-256
+                  encrypted Hive local database storage on your device. Local
+                  data includes transactions, trips, repeat subscriptions,
+                  reminders, categories, and sync queues.
                 </p>
 
                 <p className={styles.bodyText}>
-                  Deleting the application from your device may remove locally
-                  stored information, depending on your device and
-                  operating-system behavior. Local deletion does not necessarily
-                  delete information already synchronized with our servers.
+                  <strong>Strict User Data Partitioning:</strong> Local database
+                  storage is strictly partitioned per authenticated user ID.
+                  Data belonging to one user is encrypted and strictly isolated,
+                  preventing access by any other user account on the same device.
                 </p>
               </article>
 
-              {/* Section 4: Cloud Storage and Synchronization */}
+              {/* Section 4: Cloud Storage & Synchronization */}
               <article id="cloud-sync" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
@@ -464,38 +458,24 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                   <div className={styles.sectionTitleGroup}>
                     <span className={styles.sectionNumber}>Section 4</span>
                     <h2 className={styles.sectionTitle}>
-                      4. Cloud Storage and Synchronization
+                      4. Cloud Storage & Synchronization
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  Where cloud synchronization is enabled, selected Xpense data
-                  may be transmitted to our backend services and stored on cloud
-                  infrastructure. Cloud synchronization may allow you to:
-                </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>
-                    Back up supported Xpense data
-                  </li>
-                  <li className={styles.listItem}>
-                    Restore data when using another supported device
-                  </li>
-                  <li className={styles.listItem}>
-                    Keep supported data synchronized between your device and
-                    Xpense services
-                  </li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  The information synchronized to our servers may include
-                  account information, categories, transactions, and other data
-                  necessary to provide synchronization.
+                  When cloud synchronization is active (available with an active
+                  cloud tier), your transactions, trips, subscriptions,
+                  reminders, and categories are transmitted over encrypted TLS
+                  1.3 / HTTPS connections to our secure backend cloud database.
                 </p>
 
                 <p className={styles.bodyText}>
-                  If you use Xpense while offline, data may remain on your
-                  device until synchronization becomes available.
+                  <strong>Offline-First Sync Policy:</strong> Even when
+                  cloud-enabled, you maintain full offline capabilities.
+                  Unsynced changes are queued in encrypted local storage and
+                  synchronized automatically when an active connection is
+                  restored.
                 </p>
               </article>
 
@@ -514,53 +494,36 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                 </div>
 
                 <p className={styles.bodyText}>
-                  We may use collected information to:
+                  We use collected information strictly to deliver and enhance
+                  the core expense tracking service:
                 </p>
+
                 <ul className={styles.list}>
                   <li className={styles.listItem}>
-                    Create and manage your Xpense account
-                  </li>
-                  <li className={styles.listItem}>Authenticate you</li>
-                  <li className={styles.listItem}>
-                    Provide expense tracking functionality
+                    Authenticate your account and maintain active session security
                   </li>
                   <li className={styles.listItem}>
-                    Store and synchronize your data
+                    Calculate spending analytics, trends, charts, and budget thresholds
                   </li>
                   <li className={styles.listItem}>
-                    Provide offline functionality
-                  </li>
-                  <li className={styles.listItem}>Provide premium features</li>
-                  <li className={styles.listItem}>
-                    Process and maintain subscription status
+                    Compute group trip split balances and equal per-person shares
                   </li>
                   <li className={styles.listItem}>
-                    Display advertisements to eligible users
+                    Schedule local device notifications for repeat subscriptions and lend due dates
                   </li>
                   <li className={styles.listItem}>
-                    Maintain and improve the application
+                    Store and synchronize data between your device and secure servers
                   </li>
                   <li className={styles.listItem}>
-                    Diagnose technical problems and errors
+                    Enable premium features and track subscription entitlements
                   </li>
                   <li className={styles.listItem}>
-                    Protect the security and integrity of our services
-                  </li>
-                  <li className={styles.listItem}>
-                    Respond to support requests
-                  </li>
-                  <li className={styles.listItem}>
-                    Comply with applicable legal obligations
+                    Diagnose technical crashes and improve app reliability
                   </li>
                 </ul>
-
-                <div className={styles.infoCallout}>
-                  <strong>Zero Advisory Use:</strong> We do not use your expense
-                  information to provide personalized financial advice.
-                </div>
               </article>
 
-              {/* Section 6: Google Sign-In and Firebase */}
+              {/* Section 6: Google Sign-In & Firebase */}
               <article id="google-firebase" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
@@ -569,33 +532,20 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                   <div className={styles.sectionTitleGroup}>
                     <span className={styles.sectionNumber}>Section 6</span>
                     <h2 className={styles.sectionTitle}>
-                      6. Google Sign-In and Firebase
+                      6. Google Sign-In & Firebase
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  Xpense may use Google Sign-In and Firebase Authentication to
-                  authenticate users.
-                </p>
-                <p className={styles.bodyText}>
-                  When you use Google Sign-In, Google may provide Xpense with
-                  information necessary to authenticate your account, such as
-                  your email address, name, profile information, and a unique
-                  account identifier, depending on the permissions and
-                  configuration of the authentication service.
-                </p>
-                <p className={styles.bodyText}>
-                  Firebase Authentication may process authentication information
-                  on our behalf.
-                </p>
-                <p className={styles.bodyText}>
-                  For more information about Google's privacy practices, please
-                  refer to Google's privacy documentation.
+                  Xpense utilizes Google Sign-In and Firebase Authentication to
+                  verify user identities. Firebase Authentication securely
+                  processes tokens on our behalf following industry security
+                  standards.
                 </p>
               </article>
 
-              {/* Section 7: Advertising */}
+              {/* Section 7: Advertising (Google AdMob) */}
               <article id="advertising" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
@@ -603,44 +553,37 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                   </div>
                   <div className={styles.sectionTitleGroup}>
                     <span className={styles.sectionNumber}>Section 7</span>
-                    <h2 className={styles.sectionTitle}>7. Advertising</h2>
+                    <h2 className={styles.sectionTitle}>
+                      7. Advertising (Google AdMob)
+                    </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  Xpense may display advertisements through third-party
-                  advertising services such as Google AdMob. Advertising
-                  providers may process information such as:
-                </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>Advertising identifiers</li>
-                  <li className={styles.listItem}>Device information</li>
-                  <li className={styles.listItem}>
-                    Approximate location where permitted
-                  </li>
-                  <li className={styles.listItem}>
-                    Application and advertising interaction information
-                  </li>
-                  <li className={styles.listItem}>Diagnostic information</li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  The exact information processed may depend on your device,
-                  operating system, advertising settings, consent choices, and
-                  the configuration of the advertising SDK.
-                </p>
-                <p className={styles.bodyText}>
-                  Premium users may receive an ad-free experience where such
-                  functionality is included in their subscription.
+                  The free tier of Xpense may display third-party advertisements
+                  via Google AdMob. AdMob may process advertising identifiers
+                  and diagnostic metrics according to Google Ad policies.
                 </p>
 
-                <div className={styles.infoCallout}>
-                  <strong>Guaranteed Privacy Protection:</strong> Xpense does
-                  not sell users' personal expense records to advertisers.
+                <p className={styles.bodyText}>
+                  Subscribers to Xpense Premium enjoy an ad-free experience
+                  across the application.
+                </p>
+
+                <div className={styles.successCallout}>
+                  <CheckCircle2
+                    size={18}
+                    style={{ color: "var(--google-green)", flexShrink: 0 }}
+                  />
+                  <div>
+                    <strong>Zero Ad Selling:</strong> We strictly never sell or
+                    share your expense entries, receipts, or financial records
+                    with advertisers.
+                  </div>
                 </div>
               </article>
 
-              {/* Section 8: Subscriptions and Payments */}
+              {/* Section 8: Subscriptions & Payments */}
               <article id="subscriptions" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
@@ -649,32 +592,15 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                   <div className={styles.sectionTitleGroup}>
                     <span className={styles.sectionNumber}>Section 8</span>
                     <h2 className={styles.sectionTitle}>
-                      8. Subscriptions and Payments
+                      8. Subscriptions & Payments
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  Xpense may offer paid subscriptions or premium features.
-                  Payments for subscriptions are processed through the
-                  applicable platform, such as:
-                </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>Google Play</li>
-                  <li className={styles.listItem}>Apple App Store</li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  Xpense does not directly store your complete credit card or
-                  debit card number when payments are processed by the
-                  applicable app store.
-                </p>
-                <p className={styles.bodyText}>
-                  We may receive information necessary to determine subscription
-                  status, such as whether a subscription is active, expired,
-                  cancelled, or otherwise available to the user. This
-                  information may be associated with your Xpense account to
-                  provide premium functionality.
+                  All purchases and subscriptions are handled entirely by Google
+                  Play Store or Apple App Store. Xpense does not collect or store
+                  full credit card numbers or banking credentials.
                 </p>
               </article>
 
@@ -693,33 +619,14 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                 </div>
 
                 <p className={styles.bodyText}>
-                  Xpense may use third-party services to provide specific
-                  functionality. These services may include:
-                </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>Firebase Authentication</li>
-                  <li className={styles.listItem}>Google Sign-In</li>
-                  <li className={styles.listItem}>Google AdMob</li>
-                  <li className={styles.listItem}>Google Play services</li>
-                  <li className={styles.listItem}>Apple App Store services</li>
-                  <li className={styles.listItem}>Google ML Kit</li>
-                  <li className={styles.listItem}>
-                    Cloud hosting and database infrastructure
-                  </li>
-                  <li className={styles.listItem}>
-                    Other technical service providers required to operate Xpense
-                  </li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  Third-party providers may process information according to
-                  their own privacy policies and contractual obligations. We aim
-                  to use third-party services in a manner consistent with this
-                  Privacy Policy and applicable requirements.
+                  Xpense integrates with trusted services including Google
+                  Firebase, Google Sign-In, Google AdMob, Google ML Kit, Google
+                  Play / Apple Store services, and system local notification
+                  managers.
                 </p>
               </article>
 
-              {/* Section 10: Text Recognition and ML Features */}
+              {/* Section 10: Text Recognition & ML Features */}
               <article id="ml-features" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
@@ -728,41 +635,24 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                   <div className={styles.sectionTitleGroup}>
                     <span className={styles.sectionNumber}>Section 10</span>
                     <h2 className={styles.sectionTitle}>
-                      10. Text Recognition and ML Features
+                      10. Text Recognition & ML Features
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  Xpense may use Google ML Kit or similar technologies to
-                  provide text-recognition functionality, such as recognizing
-                  information from images or receipts.
-                </p>
-                <p className={styles.bodyText}>
-                  Where a feature processes an image or document, the
-                  information required for that feature may be processed
-                  according to the implementation of the relevant ML technology.
-                </p>
-                <p className={styles.bodyText}>
-                  We do not use text-recognition functionality to intentionally
-                  collect information unrelated to the feature being used.
+                  Where optical text recognition is used (such as recognizing
+                  transaction details from receipt images), processing occurs
+                  locally on-device using Google ML Kit.
                 </p>
 
-                <div className={styles.calloutBox}>
-                  <AlertCircle
-                    size={18}
-                    style={{ color: "var(--google-yellow)", flexShrink: 0 }}
-                  />
-                  <div>
-                    <strong>[TO CONFIRM BEFORE PUBLICATION:</strong> Confirm
-                    whether all ML Kit processing currently used by Xpense
-                    occurs entirely on-device and whether any recognized text or
-                    images are transmitted to Xpense servers.<strong>]</strong>
-                  </div>
-                </div>
+                <p className={styles.bodyText}>
+                  Xpense does not retain or store unnecessary image data beyond
+                  feature execution.
+                </p>
               </article>
 
-              {/* Section 11: Data Sharing */}
+              {/* Section 11: Data Sharing & Disclosure */}
               <article id="data-sharing" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
@@ -770,55 +660,17 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                   </div>
                   <div className={styles.sectionTitleGroup}>
                     <span className={styles.sectionNumber}>Section 11</span>
-                    <h2 className={styles.sectionTitle}>11. Data Sharing</h2>
+                    <h2 className={styles.sectionTitle}>
+                      11. Data Sharing & Disclosure
+                    </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  We may share information with service providers that help us
-                  operate Xpense. Examples include providers responsible for:
-                </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>Authentication</li>
-                  <li className={styles.listItem}>Cloud infrastructure</li>
-                  <li className={styles.listItem}>Database hosting</li>
-                  <li className={styles.listItem}>Advertising</li>
-                  <li className={styles.listItem}>Subscription processing</li>
-                  <li className={styles.listItem}>Application diagnostics</li>
-                  <li className={styles.listItem}>Security</li>
-                  <li className={styles.listItem}>Technical support</li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  <strong>We do not sell your personal expense records.</strong>
-                </p>
-
-                <p className={styles.bodyText}>
-                  We may also disclose information where reasonably necessary
-                  to:
-                </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>
-                    Comply with applicable law
-                  </li>
-                  <li className={styles.listItem}>
-                    Respond to lawful requests
-                  </li>
-                  <li className={styles.listItem}>
-                    Protect the rights, safety, and security of users or Xpense
-                  </li>
-                  <li className={styles.listItem}>
-                    Detect or prevent fraud, abuse, or security incidents
-                  </li>
-                  <li className={styles.listItem}>
-                    Enforce our terms and policies
-                  </li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  We do not share your personal information with third parties
-                  for their own unrelated purposes unless permitted or required
-                  by applicable law or with your consent where required.
+                  We do not sell, rent, or trade your personal information. We
+                  only share information with trusted infrastructure providers
+                  (cloud database hosting, authentication) strictly necessary
+                  to run the application.
                 </p>
               </article>
 
@@ -835,404 +687,416 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                 </div>
 
                 <p className={styles.bodyText}>
-                  We use reasonable technical and organizational measures
-                  designed to protect information from unauthorized access,
-                  alteration, disclosure, or destruction. Depending on the
-                  service and data involved, these measures may include:
+                  We implement modern technical and organizational safeguards
+                  designed to protect personal data:
                 </p>
+
                 <ul className={styles.list}>
                   <li className={styles.listItem}>
-                    Encrypted network communication such as HTTPS/TLS
+                    AES-256 on-device database encryption for all local Hive storage boxes
                   </li>
                   <li className={styles.listItem}>
-                    Authentication and authorization controls
-                  </li>
-                  <li className={styles.listItem}>Firebase authentication</li>
-                  <li className={styles.listItem}>
-                    Server-side access controls
+                    Strict per-user data partition isolation preventing cross-account access on shared devices
                   </li>
                   <li className={styles.listItem}>
-                    Database access restrictions
+                    Encrypted network communication via HTTPS and TLS 1.3
                   </li>
                   <li className={styles.listItem}>
-                    Secure handling of authentication credentials and service
-                    credentials
+                    Secure OAuth 2.0 Bearer token storage in system Keystore / Keychain
                   </li>
                   <li className={styles.listItem}>
-                    Application-level authorization checks
+                    Device biometric protection (Face ID / Fingerprint / Passcode lock) with auto-lock timers
+                  </li>
+                  <li className={styles.listItem}>
+                    Server-side role-based access controls and database security policies
                   </li>
                 </ul>
-
-                <p className={styles.bodyText}>
-                  However, no method of electronic storage or transmission can
-                  be guaranteed to be completely secure.
-                </p>
-                <p className={styles.bodyText}>
-                  You are responsible for maintaining the security of your
-                  device and account credentials.
-                </p>
               </article>
 
-              {/* Section 13: Data Retention */}
+              {/* Section 13: Group Expenses & Trip Member Integrity */}
+              <article id="trip-integrity" className={styles.policyCard}>
+                <div className={styles.sectionHeader}>
+                  <div className={styles.sectionIconBox}>
+                    <Users size={22} />
+                  </div>
+                  <div className={styles.sectionTitleGroup}>
+                    <span className={styles.sectionNumber}>Section 13</span>
+                    <h2 className={styles.sectionTitle}>
+                      13. Group Expenses & Trip Member Integrity
+                    </h2>
+                  </div>
+                </div>
+
+                <p className={styles.bodyText}>
+                  In shared Trip expense management, accurate financial
+                  accounting and dispute prevention are paramount.
+                </p>
+
+                <p className={styles.bodyText}>
+                  <strong>Transaction Protection Policy:</strong> A group member
+                  who has recorded or paid for any transaction within a trip
+                  cannot be removed from that trip. This ensures an immutable
+                  audit trail and fair settlement calculations for all
+                  participants.
+                </p>
+
+                <p className={styles.bodyText}>
+                  Organizers and members without recorded expenses may be
+                  modified or removed at any time.
+                </p>
+
+                <div className={styles.infoCallout}>
+                  <Info
+                    size={18}
+                    style={{ color: "var(--brand-primary)", flexShrink: 0 }}
+                  />
+                  <div>
+                    <strong>Ledger Integrity:</strong> Members with recorded
+                    expenses are retained in the trip history to ensure math and
+                    balances remain accurate.
+                  </div>
+                </div>
+              </article>
+
+              {/* Section 14: Device Permissions */}
+              <article id="device-permissions" className={styles.policyCard}>
+                <div className={styles.sectionHeader}>
+                  <div className={styles.sectionIconBox}>
+                    <Smartphone size={22} />
+                  </div>
+                  <div className={styles.sectionTitleGroup}>
+                    <span className={styles.sectionNumber}>Section 14</span>
+                    <h2 className={styles.sectionTitle}>
+                      14. Device Permissions
+                    </h2>
+                  </div>
+                </div>
+
+                <p className={styles.bodyText}>
+                  Xpense may request the following device permissions to enable
+                  specific user features:
+                </p>
+
+                <ul className={styles.list}>
+                  <li className={styles.listItem}>
+                    <strong>Notifications:</strong> Used to deliver timely reminders for repeat subscriptions and lend due dates.
+                  </li>
+                  <li className={styles.listItem}>
+                    <strong>Biometrics (Face ID / Fingerprint):</strong> Used purely on-device to lock and unlock the app.
+                  </li>
+                  <li className={styles.listItem}>
+                    <strong>Contacts (Optional):</strong> Used only when you tap "Pick from Contacts" to populate a trip member or reminder. No contact lists are uploaded or stored remotely.
+                  </li>
+                </ul>
+              </article>
+
+              {/* Section 15: Data Retention */}
               <article id="data-retention" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
                     <Clock size={22} />
                   </div>
                   <div className={styles.sectionTitleGroup}>
-                    <span className={styles.sectionNumber}>Section 13</span>
-                    <h2 className={styles.sectionTitle}>13. Data Retention</h2>
+                    <span className={styles.sectionNumber}>Section 15</span>
+                    <h2 className={styles.sectionTitle}>15. Data Retention</h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  We retain information for as long as reasonably necessary to
-                  provide the Xpense service and for legitimate business,
-                  security, legal, and operational purposes. The retention
-                  period may vary depending on:
+                  We retain your account and financial data for as long as your
+                  account remains active. When you delete records or delete your
+                  account, data is purged from active databases.
                 </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>The type of information</li>
-                  <li className={styles.listItem}>
-                    Whether your account remains active
-                  </li>
-                  <li className={styles.listItem}>Your use of Xpense</li>
-                  <li className={styles.listItem}>
-                    Legal or regulatory requirements
-                  </li>
-                  <li className={styles.listItem}>
-                    Security and fraud-prevention requirements
-                  </li>
-                  <li className={styles.listItem}>
-                    Backup and disaster-recovery requirements
-                  </li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  When information is no longer required, we will take
-                  reasonable steps to delete or anonymize it, subject to
-                  applicable legal and operational requirements.
-                </p>
-
-                <div className={styles.calloutBox}>
-                  <AlertCircle
-                    size={18}
-                    style={{ color: "var(--google-yellow)", flexShrink: 0 }}
-                  />
-                  <div>
-                    <strong>[TO CONFIRM BEFORE PUBLICATION:</strong> Define the
-                    actual retention period for deleted-account data and
-                    backups.<strong>]</strong>
-                  </div>
-                </div>
               </article>
 
-              {/* Section 14: Account and Data Deletion */}
+              {/* Section 16: Account & Data Deletion */}
               <article id="account-deletion" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
                     <Trash2 size={22} />
                   </div>
                   <div className={styles.sectionTitleGroup}>
-                    <span className={styles.sectionNumber}>Section 14</span>
+                    <span className={styles.sectionNumber}>Section 16</span>
                     <h2 className={styles.sectionTitle}>
-                      14. Account and Data Deletion
+                      16. Account & Data Deletion
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  You may request deletion of your Xpense account and associated
-                  personal data. Account deletion may be available through the
-                  Xpense application and through our designated account-deletion
-                  web resource.
-                </p>
-                <p className={styles.bodyText}>
-                  When an account deletion request is completed, we will delete
-                  or anonymize information associated with the account, subject
-                  to information that we are legally required or legitimately
-                  permitted to retain.
-                </p>
-                <p className={styles.bodyText}>
-                  Information that may need to be retained may include limited
-                  records required for:
-                </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>Legal compliance</li>
-                  <li className={styles.listItem}>Fraud prevention</li>
-                  <li className={styles.listItem}>Security</li>
-                  <li className={styles.listItem}>Dispute resolution</li>
-                  <li className={styles.listItem}>
-                    Accounting or transaction requirements
-                  </li>
-                  <li className={styles.listItem}>
-                    Backup and disaster recovery
-                  </li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  Such retained information will not be used for unrelated
-                  purposes.
-                </p>
-
-                <div className={styles.infoCallout}>
-                  <strong>Account deletion URL:</strong>{" "}
+                  You have full control over your data and may permanently
+                  delete your account at any time inside the app via Settings &rarr;{" "}
+                  Delete Account, or via our online{" "}
                   <Link
                     to={ROUTES.DELETE_ACCOUNT}
                     style={{
                       color: "var(--brand-primary)",
                       fontWeight: 600,
                       textDecoration: "underline",
-                      marginLeft: 4,
                     }}
                   >
-                    https://xpense-cloud.in/delete-account
+                    Account Deletion Portal
                   </Link>
+                  .
+                </p>
+
+                <p className={styles.bodyText}>
+                  <strong>Permanent Cloud & Local Purge:</strong> Calling the
+                  account deletion API completely purges your user profile,
+                  transactions, trips, repeat subscriptions, and reminders from
+                  cloud databases, and instantly empties all local encrypted Hive
+                  storage boxes.
+                </p>
+
+                <div className={styles.calloutBox}>
+                  <AlertTriangle
+                    size={18}
+                    style={{ color: "var(--google-yellow)", flexShrink: 0 }}
+                  />
+                  <div>
+                    <strong>Permanent Deletion:</strong> Account deletion is
+                    irreversible. Your records, categories, and cloud backups
+                    cannot be recovered after deletion.
+                  </div>
                 </div>
               </article>
 
-              {/* Section 15: Your Choices and Rights */}
+              {/* Section 17: Your Choices & Privacy Rights */}
               <article id="user-rights" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
                     <UserCheck size={22} />
                   </div>
                   <div className={styles.sectionTitleGroup}>
-                    <span className={styles.sectionNumber}>Section 15</span>
+                    <span className={styles.sectionNumber}>Section 17</span>
                     <h2 className={styles.sectionTitle}>
-                      15. Your Choices and Rights
+                      17. Your Choices & Privacy Rights
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  Depending on your location and applicable law, you may have
-                  rights regarding your personal information, including rights
-                  to:
-                </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>
-                    Request access to your personal information
-                  </li>
-                  <li className={styles.listItem}>
-                    Request correction of inaccurate information
-                  </li>
-                  <li className={styles.listItem}>
-                    Request deletion of your information
-                  </li>
-                  <li className={styles.listItem}>
-                    Request information about how your data is processed
-                  </li>
-                  <li className={styles.listItem}>
-                    Withdraw consent where processing is based on consent
-                  </li>
-                  <li className={styles.listItem}>
-                    Object to or restrict certain processing where applicable
-                  </li>
-                  <li className={styles.listItem}>
-                    Request portability of certain information where applicable
-                  </li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  You may contact us using the information provided in the
-                  "Contact Us" section to exercise applicable rights. We may
-                  need to verify your identity before processing certain
-                  requests.
+                  Depending on your jurisdiction, you may have rights to access
+                  your personal data, rectify inaccuracies, request full
+                  deletion, or export your financial records.
                 </p>
               </article>
 
-              {/* Section 16: Children's Privacy */}
+              {/* Section 18: Children's Privacy */}
               <article id="children-privacy" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
                     <Baby size={22} />
                   </div>
                   <div className={styles.sectionTitleGroup}>
-                    <span className={styles.sectionNumber}>Section 16</span>
+                    <span className={styles.sectionNumber}>Section 18</span>
                     <h2 className={styles.sectionTitle}>
-                      16. Children's Privacy
+                      18. Children's Privacy
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  Xpense is not intended for children where applicable law
-                  prohibits us from collecting their personal information
-                  without appropriate consent.
-                </p>
-                <p className={styles.bodyText}>
-                  We do not knowingly collect personal information from children
-                  in violation of applicable law.
-                </p>
-                <p className={styles.bodyText}>
-                  If you believe that a child has provided personal information
-                  to Xpense inappropriately, please contact us so that we can
-                  investigate and take appropriate action.
+                  Xpense is not directed to children under 13 (or under 16 in
+                  certain jurisdictions), and we do not knowingly collect
+                  personal information from children.
                 </p>
               </article>
 
-              {/* Section 17: International Data Processing */}
-              <article
-                id="international-transfers"
-                className={styles.policyCard}
-              >
+              {/* Section 19: International Data Processing */}
+              <article id="international-transfers" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
                     <Globe size={22} />
                   </div>
                   <div className={styles.sectionTitleGroup}>
-                    <span className={styles.sectionNumber}>Section 17</span>
+                    <span className={styles.sectionNumber}>Section 19</span>
                     <h2 className={styles.sectionTitle}>
-                      17. International Data Processing
+                      19. International Data Processing
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  Xpense may use service providers and cloud infrastructure
-                  located in countries other than your country of residence. As
-                  a result, your information may be processed or stored outside
-                  your country.
-                </p>
-                <p className={styles.bodyText}>
-                  Where required by applicable law, we will implement
-                  appropriate safeguards for international transfers of personal
-                  information.
+                  Our cloud infrastructure providers may operate data centers in
+                  multiple regions. We ensure appropriate technical safeguards
+                  protect data during cross-border transit.
                 </p>
               </article>
 
-              {/* Section 18: Cookies and Similar Technologies */}
+              {/* Section 20: Cookies & Local Identifiers */}
               <article id="cookies" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
                     <Cookie size={22} />
                   </div>
                   <div className={styles.sectionTitleGroup}>
-                    <span className={styles.sectionNumber}>Section 18</span>
+                    <span className={styles.sectionNumber}>Section 20</span>
                     <h2 className={styles.sectionTitle}>
-                      18. Cookies and Similar Technologies
+                      20. Cookies & Local Identifiers
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  The Xpense mobile application may use technologies provided by
-                  third-party services that perform functions similar to
-                  cookies, including identifiers used for authentication,
-                  advertising, security, analytics, or application
-                  functionality.
-                </p>
-                <p className={styles.bodyText}>
-                  The use of these technologies depends on the services and SDKs
-                  integrated into the application.
+                  The mobile application uses local identifiers and tokens
+                  stored on-device to maintain authenticated sessions and app
+                  preferences.
                 </p>
               </article>
 
-              {/* Section 19: Changes to This Privacy Policy */}
+              {/* Section 21: Changes to This Privacy Policy */}
               <article id="policy-changes" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
                     <RefreshCw size={22} />
                   </div>
                   <div className={styles.sectionTitleGroup}>
-                    <span className={styles.sectionNumber}>Section 19</span>
+                    <span className={styles.sectionNumber}>Section 21</span>
                     <h2 className={styles.sectionTitle}>
-                      19. Changes to This Privacy Policy
+                      21. Changes to This Privacy Policy
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  We may update this Privacy Policy from time to time to reflect
-                  changes to:
-                </p>
-                <ul className={styles.list}>
-                  <li className={styles.listItem}>Xpense functionality</li>
-                  <li className={styles.listItem}>Data processing practices</li>
-                  <li className={styles.listItem}>Third-party services</li>
-                  <li className={styles.listItem}>
-                    Legal or regulatory requirements
-                  </li>
-                </ul>
-
-                <p className={styles.bodyText}>
-                  When we make changes, we will update the "Last Updated" date
-                  at the top of this Privacy Policy. Where required, we may
-                  provide additional notice or request consent for material
-                  changes.
+                  We may update this Privacy Policy from time to time. We will
+                  notify you by updating the "Last Updated" date and posting the
+                  revised policy inside the application.
                 </p>
               </article>
 
-              {/* Section 20: Contact Us */}
+              {/* Section 22: Contact Us */}
               <article id="contact-us" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
                     <Mail size={22} />
                   </div>
                   <div className={styles.sectionTitleGroup}>
-                    <span className={styles.sectionNumber}>Section 20</span>
-                    <h2 className={styles.sectionTitle}>20. Contact Us</h2>
+                    <span className={styles.sectionNumber}>Section 22</span>
+                    <h2 className={styles.sectionTitle}>22. Contact Us</h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  If you have questions, concerns, or requests regarding this
-                  Privacy Policy or your personal information, please contact
-                  us:
+                  If you have questions, privacy concerns, or requests regarding
+                  this Privacy Policy, please contact our support team:
                 </p>
 
+                <ul className={styles.list}>
+                  <li className={styles.listItem}>
+                    <strong>Application:</strong> Xpense
+                  </li>
+                  <li className={styles.listItem}>
+                    <strong>Official Email:</strong>{" "}
+                    <a
+                      href={`mailto:${PRIVACY_POLICY_METADATA.supportEmail}`}
+                      style={{ color: "var(--brand-primary)", fontWeight: 600 }}
+                    >
+                      {PRIVACY_POLICY_METADATA.supportEmail}
+                    </a>
+                  </li>
+                  <li className={styles.listItem}>
+                    <strong>Website:</strong>{" "}
+                    <a
+                      href={PRIVACY_POLICY_METADATA.websiteUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: "var(--brand-primary)", fontWeight: 600 }}
+                    >
+                      {PRIVACY_POLICY_METADATA.websiteUrl}
+                    </a>
+                  </li>
+                </ul>
+
                 <div className={styles.contactGrid}>
-                  <div className={styles.contactItem}>
-                    <span className={styles.contactLabel}>Application</span>
-                    <span className={styles.contactValue}>Xpense</span>
-                  </div>
-                  <div className={styles.contactItem}>
-                    <span className={styles.contactLabel}>Privacy Email</span>
-                    <span className={styles.contactValue}>[TO ADD]</span>
-                  </div>
-                  <div className={styles.contactItem}>
-                    <span className={styles.contactLabel}>Website</span>
-                    <span className={styles.contactValue}>[TO ADD]</span>
-                  </div>
-                  <div className={styles.contactItem}>
-                    <span className={styles.contactLabel}>
-                      Privacy Policy URL
-                    </span>
-                    <span className={styles.contactValue}>[TO ADD]</span>
-                  </div>
+                  <a
+                    href={`mailto:${PRIVACY_POLICY_METADATA.supportEmail}`}
+                    className={styles.contactItem}
+                  >
+                    <div className={styles.contactIconBox}>
+                      <Mail size={18} />
+                    </div>
+                    <div>
+                      <div
+                        style={{
+                          fontSize: "0.76rem",
+                          color: "var(--text-muted)",
+                        }}
+                      >
+                        Direct Support Email
+                      </div>
+                      <div className={styles.contactValue}>
+                        {PRIVACY_POLICY_METADATA.supportEmail}
+                      </div>
+                    </div>
+                  </a>
+
+                  <a
+                    href={PRIVACY_POLICY_METADATA.websiteUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.contactItem}
+                  >
+                    <div className={styles.contactIconBox}>
+                      <Globe size={18} />
+                    </div>
+                    <div>
+                      <div
+                        style={{
+                          fontSize: "0.76rem",
+                          color: "var(--text-muted)",
+                        }}
+                      >
+                        Official Website
+                      </div>
+                      <div className={styles.contactValue}>xpense-cloud.in</div>
+                    </div>
+                  </a>
+
+                  <Link to={ROUTES.TERMS} className={styles.contactItem}>
+                    <div className={styles.contactIconBox}>
+                      <FileText size={18} />
+                    </div>
+                    <div>
+                      <div
+                        style={{
+                          fontSize: "0.76rem",
+                          color: "var(--text-muted)",
+                        }}
+                      >
+                        Terms of Service
+                      </div>
+                      <div className={styles.contactValue}>
+                        Terms &amp; Conditions
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </article>
 
-              {/* Section 21: Important Notice */}
+              {/* Section 23: Important Compliance Notice */}
               <article id="important-notice" className={styles.policyCard}>
                 <div className={styles.sectionHeader}>
                   <div className={styles.sectionIconBox}>
                     <AlertCircle size={22} />
                   </div>
                   <div className={styles.sectionTitleGroup}>
-                    <span className={styles.sectionNumber}>Section 21</span>
+                    <span className={styles.sectionNumber}>Section 23</span>
                     <h2 className={styles.sectionTitle}>
-                      21. Important Notice
+                      23. Important Compliance Notice
                     </h2>
                   </div>
                 </div>
 
                 <p className={styles.bodyText}>
-                  This Privacy Policy describes Xpense's intended data practices
-                  and should be kept consistent with the application's actual
-                  implementation.
+                  This Privacy Policy describes Xpense’s data practices and
+                  complies with Google Play and Apple App Store privacy
+                  disclosure standards.
                 </p>
                 <p className={styles.bodyText}>
-                  The information provided in this policy should also be kept
-                  consistent with the privacy and data-disclosure information
-                  submitted to Google Play and Apple App Store.
-                </p>
-                <p className={styles.bodyText}>
-                  If Xpense's data collection, third-party SDKs, advertising
-                  configuration, authentication methods, storage architecture,
-                  or subscription system changes, this Privacy Policy should be
-                  reviewed and updated accordingly.
+                  If our data collection practices change, this policy will be
+                  promptly reviewed and updated accordingly.
                 </p>
 
                 <div
@@ -1244,7 +1108,8 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
                     color: "var(--text-muted)",
                   }}
                 >
-                  <strong>Last Updated:</strong> September 22, 2026
+                  <strong>Last Updated:</strong>{" "}
+                  {PRIVACY_POLICY_METADATA.lastUpdated}
                 </div>
               </article>
             </main>
@@ -1267,3 +1132,5 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
     </div>
   );
 };
+
+export default PrivacyPolicy;

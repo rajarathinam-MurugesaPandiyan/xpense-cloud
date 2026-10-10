@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { LottieLogo } from "../LottieLogo";
-import { Smartphone, Menu, X, ChevronRight, Sparkles } from "lucide-react";
+import { Smartphone, Menu, X, ChevronRight, MessageSquare } from "lucide-react";
 import { NAV_LINKS, APP_INFO } from "../../constants";
 import styles from "./Navbar.module.scss";
 
 export interface NavbarProps {
   onOpenDownload?: () => void;
   onOpenDemo?: () => void;
+  onOpenFeedback?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenDownload,
   onOpenDemo,
+  onOpenFeedback,
 }) => {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const triggerFeedback = onOpenFeedback || onOpenDemo;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,17 +70,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           })}
         </nav>
 
-        {/* Right: Actions (Request Demo, Get the App, Mobile Menu) */}
+        {/* Right: Actions (Feedback, Get the App, Mobile Menu) */}
         <div className={styles.actionsContainer}>
-          {/* Secondary CTA: Request Demo */}
+          {/* Secondary CTA: Feedback */}
           <button
             type="button"
             className={styles.demoButton}
-            onClick={onOpenDemo}
-            title="Request a live personalized demo"
+            onClick={triggerFeedback}
+            title="Share feedback or suggestions directly with our team"
           >
-            <Sparkles size={14} />
-            <span>Request Demo</span>
+            <MessageSquare size={14} />
+            <span>Feedback</span>
           </button>
 
           {/* Primary High-Impact CTA: Get the App (Google Blue Pill - Hidden on Mobile) */}
@@ -141,12 +145,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
-                if (onOpenDemo) onOpenDemo();
+                if (triggerFeedback) triggerFeedback();
               }}
               className={styles.drawerSecondaryCta}
             >
-              <Sparkles size={15} />
-              <span>Request a Live Demo</span>
+              <MessageSquare size={15} />
+              <span>Share Feedback</span>
             </button>
 
             <button

@@ -11,13 +11,16 @@ export interface FooterProps {
   onOpenLogin?: () => void;
   onOpenDownload?: () => void;
   onOpenDemo?: () => void;
+  onOpenFeedback?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onOpenLogin,
   onOpenDownload,
   onOpenDemo,
+  onOpenFeedback,
 }) => {
+  const triggerFeedback = onOpenFeedback || onOpenDemo;
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -49,13 +52,13 @@ export const Footer: React.FC<FooterProps> = ({
               <a href="#interactive-demo" className={styles.footerLink}>
                 Live Interactive Demo
               </a>
-              {onOpenDemo && (
+              {triggerFeedback && (
                 <button
                   type="button"
-                  onClick={onOpenDemo}
+                  onClick={triggerFeedback}
                   className={styles.footerButtonLink}
                 >
-                  Request Live Demo
+                  Share Feedback
                 </button>
               )}
               <a href="#mobile-showcase" className={styles.footerLink}>

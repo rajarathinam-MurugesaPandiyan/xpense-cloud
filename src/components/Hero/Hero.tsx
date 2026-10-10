@@ -19,9 +19,16 @@ import styles from "./Hero.module.scss";
 export interface HeroProps {
   onOpenDownload?: () => void;
   onOpenDemo?: () => void;
+  onOpenFeedback?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onOpenDemo }) => {
+export const Hero: React.FC<HeroProps> = ({
+  onOpenDownload,
+  onOpenDemo,
+  onOpenFeedback,
+}) => {
+  const triggerFeedback = onOpenFeedback || onOpenDemo;
+
   const scrollToDemo = () => {
     const el = document.getElementById("interactive-demo");
     if (el) {
@@ -85,12 +92,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onOpenDemo }) => {
               </button>
             </div>
 
-            {onOpenDemo && (
+            {triggerFeedback && (
               <div style={{ marginTop: '12px', fontSize: '0.84rem', color: 'var(--text-secondary)' }}>
-                <span>Need a team or business walkthrough? </span>
+                <span>Have ideas, suggestions, or feature requests? </span>
                 <button
                   type="button"
-                  onClick={onOpenDemo}
+                  onClick={triggerFeedback}
                   style={{
                     background: 'transparent',
                     border: 'none',
@@ -102,7 +109,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDownload, onOpenDemo }) => {
                     fontSize: 'inherit',
                   }}
                 >
-                  Request a live demo &rarr;
+                  Share your feedback &rarr;
                 </button>
               </div>
             )}
