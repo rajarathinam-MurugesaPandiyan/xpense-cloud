@@ -37,8 +37,8 @@ export const TESTIMONIALS: TestimonialItem[] = [
 
 export const FAQS: FaqItem[] = [
   {
-    q: 'Is Xpense Cloud free to download on Android & iOS?',
-    a: 'Yes! Xpense Cloud is free to download from both Google Play Store and Apple App Store. The free tier includes full expense tracking, category budgets, and cloud sync.'
+    q: 'Where can I download Xpense Cloud?',
+    a: 'Xpense Cloud is available for immediate free download on Google Play Store for Android. The Apple ID & iOS version is currently in progress and coming soon to the Apple App Store.'
   },
   {
     q: 'How does real-time cloud sync work between mobile and web?',

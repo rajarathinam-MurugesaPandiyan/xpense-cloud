@@ -48,20 +48,20 @@
   color: var(--text-secondary);
   font-size: 1.05rem;
   line-height: 1.65;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
 }
 
 .badgesRow {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 
   @media (max-width: 480px) {
     flex-direction: column;
     .storeBadge {
       width: 100%;
-      justify-content: center;
+      justify-content: flex-start;
     }
   }
 }
@@ -70,12 +70,15 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px 24px;
+  padding: 12px 22px;
   border-radius: 16px;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-color);
   text-decoration: none;
   transition: all 0.25s ease;
+  cursor: pointer;
+  color: inherit;
+  font-family: inherit;
 
   &:hover {
     border-color: var(--brand-primary);
@@ -84,8 +87,31 @@
   }
 }
 
+.appleBadgeInProgress {
+  background: var(--bg-surface-elevated);
+  position: relative;
+
+  &:hover {
+    border-color: #F59E0B;
+    box-shadow: 0 8px 24px -4px rgba(245, 158, 11, 0.25);
+  }
+}
+
+.badgeIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.badgeTextWrap {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
 .badgeStoreLabel {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   color: var(--text-muted);
   font-weight: 600;
@@ -97,6 +123,117 @@
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.1;
+}
+
+.liveChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10B981;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
+}
+
+.inProgressChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #D97706;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-left: 6px;
+
+  :global([data-theme='dark']) & {
+    color: #FBBF24;
+  }
+}
+
+.pulsingDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F59E0B;
+  box-shadow: 0 0 6px #F59E0B;
+  animation: pulse 1.8s infinite ease-in-out;
+}
+
+.platformStatusStrip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.81rem;
+}
+
+.statusPillLive {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  strong {
+    color: var(--text-primary);
+  }
+
+  &:hover {
+    color: var(--brand-primary);
+  }
+}
+
+.statusDivider {
+  width: 1px;
+  height: 14px;
+  background: var(--border-color);
+
+  @media (max-width: 540px) {
+    display: none;
+  }
+}
+
+.statusPillProgress {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-secondary);
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 0.15s ease;
+
+  strong {
+    color: var(--text-primary);
+  }
+
+  &:hover {
+    color: #D97706;
+  }
 }
 
 .packageRow {
@@ -152,6 +289,9 @@
   color: var(--brand-primary);
   font-size: 0.8rem;
   font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .qrCodeBox {
@@ -166,10 +306,42 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   margin-bottom: 16px;
   border: 1px solid var(--border-color);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 16px 36px rgba(11, 87, 208, 0.25);
+  }
+}
+
+.qrCodeImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .qrText {
   font-size: 0.86rem;
   color: var(--text-secondary);
-  max-width: 240px;
+  max-width: 260px;
+  line-height: 1.45;
+}
+
+.qrSubtext {
+  display: block;
+  font-size: 0.77rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
 }

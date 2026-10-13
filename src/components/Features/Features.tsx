@@ -183,13 +183,9 @@ export const Features: React.FC = () => {
               fontWeight: 700,
             }}
           >
-            <span style={{ color: "var(--text-primary)" }}>
-              📱 Flutter Mobile
-            </span>
+            <span style={{ color: "var(--text-primary)" }}>Flutter Mobile</span>
             <span style={{ color: "var(--brand-primary)" }}>⟷ Cloud ⟷</span>
-            <span style={{ color: "var(--text-primary)" }}>
-              💻 Web Dashboard
-            </span>
+            <span style={{ color: "var(--text-primary)" }}>Web Dashboard</span>
           </div>
         );
       case "biometric":

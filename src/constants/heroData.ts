@@ -3,7 +3,7 @@ export const HERO_METRICS = {
   monthlyCashflow: "+₹2,410.10",
   savingsGoalPercent: "82% Reached",
   categorySpent: "₹3,240.00 Spent",
-  rating: "4.9★ Google Play & App Store Rating",
+  rating: "4.9★ Google Play Store Rating",
   security: "Local Hive & Firestore Encrypted",
 };
 

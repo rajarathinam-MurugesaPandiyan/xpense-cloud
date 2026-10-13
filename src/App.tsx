@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { Navbar, Footer, FloatingThemeWidget, FeedbackModal } from "./components";
+import { Navbar, Footer, FloatingThemeWidget, FeedbackModal, AppleInProgressModal } from "./components";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { HomePage, PrivacyPolicyPage, TermsPage, DeleteAccountPage, NotFoundPage } from "./pages";
 import { ROUTES } from "./routes";
@@ -8,6 +8,7 @@ import styles from "./App.module.scss";
 
 export const App: React.FC = () => {
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState<boolean>(false);
+  const [isAppleInProgressModalOpen, setIsAppleInProgressModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -39,6 +40,14 @@ export const App: React.FC = () => {
     setIsFeedbackModalOpen(false);
   };
 
+  const handleOpenAppleInProgress = () => {
+    setIsAppleInProgressModalOpen(true);
+  };
+
+  const handleCloseAppleInProgress = () => {
+    setIsAppleInProgressModalOpen(false);
+  };
+
   return (
     <div className={styles.appWrapper}>
       {/* Automatically scrolls to top on route change */}
@@ -62,6 +71,8 @@ export const App: React.FC = () => {
               <HomePage
                 onOpenDownload={scrollToDownload}
                 onOpenDemo={handleOpenFeedback}
+                onOpenFeedback={handleOpenFeedback}
+                onOpenAppleInProgress={handleOpenAppleInProgress}
               />
             }
           />
@@ -86,6 +97,7 @@ export const App: React.FC = () => {
         onOpenDownload={scrollToDownload}
         onOpenFeedback={handleOpenFeedback}
         onOpenDemo={handleOpenFeedback}
+        onOpenAppleInProgress={handleOpenAppleInProgress}
       />
 
       {/* Floating Theme Switcher Dock */}
@@ -95,6 +107,12 @@ export const App: React.FC = () => {
       <FeedbackModal
         isOpen={isFeedbackModalOpen}
         onClose={handleCloseFeedback}
+      />
+
+      {/* Apple ID & iOS App Store Release In Progress Dialog */}
+      <AppleInProgressModal
+        isOpen={isAppleInProgressModalOpen}
+        onClose={handleCloseAppleInProgress}
       />
     </div>
   );

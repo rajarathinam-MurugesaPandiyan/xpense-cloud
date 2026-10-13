@@ -12,6 +12,7 @@ export interface FooterProps {
   onOpenDownload?: () => void;
   onOpenDemo?: () => void;
   onOpenFeedback?: () => void;
+  onOpenAppleInProgress?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -19,8 +20,10 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenDownload,
   onOpenDemo,
   onOpenFeedback,
+  onOpenAppleInProgress,
 }) => {
   const triggerFeedback = onOpenFeedback || onOpenDemo;
+  const handleAppleClick = onOpenAppleInProgress || onOpenDownload;
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -75,19 +78,24 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className={styles.columnHeading}>Platforms</h4>
             <div className={styles.linkList}>
               <a
-                href="#download"
-                onClick={onOpenDownload}
+                href={APP_INFO.playStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.footerLink}
+                title="Download directly on Google Play Store"
               >
-                Google Play Store (Android)
+                <span>Google Play Store (Android)</span>
+                <span className={styles.footerLiveTag}>Live</span>
               </a>
-              <a
-                href="#download"
-                onClick={onOpenDownload}
-                className={styles.footerLink}
+              <button
+                type="button"
+                onClick={handleAppleClick}
+                className={styles.footerButtonLinkWithTag}
+                title="Apple ID & iOS App Store release is currently in progress"
               >
-                Apple App Store (iOS)
-              </a>
+                <span>Apple App Store (iOS)</span>
+                <span className={styles.footerProgressTag}>In Progress</span>
+              </button>
               {onOpenLogin && (
                 <button
                   type="button"

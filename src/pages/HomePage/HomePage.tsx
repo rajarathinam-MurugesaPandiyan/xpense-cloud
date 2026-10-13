@@ -12,12 +12,14 @@ export interface HomePageProps {
   onOpenDownload?: () => void;
   onOpenDemo?: () => void;
   onOpenFeedback?: () => void;
+  onOpenAppleInProgress?: () => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({
   onOpenDownload,
   onOpenDemo,
   onOpenFeedback,
+  onOpenAppleInProgress,
 }) => {
   const triggerFeedback = onOpenFeedback || onOpenDemo;
 
@@ -43,7 +45,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       <MobileShowcase />
 
       {/* App Store & Play Store Download Showcase with QR Code */}
-      <DownloadBadges />
+      <DownloadBadges onOpenAppleInProgress={onOpenAppleInProgress} />
 
       {/* Testimonials & FAQ Accordion */}
       <TestimonialsFAQ />

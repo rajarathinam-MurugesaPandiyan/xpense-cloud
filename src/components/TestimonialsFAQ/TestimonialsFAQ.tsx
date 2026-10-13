@@ -23,7 +23,7 @@ export const TestimonialsFAQ: React.FC = () => {
             Loved by Thousands of Smart Savers
           </h2>
           <p className={styles.subheading}>
-            Rated 4.9 out of 5 stars across Google Play Store and Apple App Store.
+            Rated 4.9 out of 5 stars on Google Play Store (Apple iOS version in progress).
           </p>
         </div>
 

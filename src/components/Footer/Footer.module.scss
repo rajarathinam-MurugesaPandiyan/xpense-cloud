@@ -81,6 +81,9 @@
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 
   &:hover {
     color: var(--brand-primary);
@@ -99,6 +102,50 @@
 
   &:hover {
     color: var(--brand-primary);
+  }
+}
+
+.footerButtonLinkWithTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #F59E0B;
+  }
+}
+
+.footerLiveTag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.footerProgressTag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.12);
+  color: #D97706;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+
+  :global([data-theme='dark']) & {
+    color: #FBBF24;
   }
 }
 
