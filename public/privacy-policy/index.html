@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Privacy Policy | Xpense Cloud</title>
+  <meta name="description" content="Official Privacy Policy for Xpense mobile application, cloud services, and on-device storage. Google Play & App Store Compliant." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    (function() {
+      try {
+        var stored = localStorage.getItem('xpense-theme') || 'system';
+        var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = stored === 'dark' || (stored === 'system' && systemDark);
+        var resolved = isDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', resolved);
+        if (isDark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    :root {
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-app: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-surface-elevated: #F0F4F9;
+      --border-color: #E0E2EC;
+      --border-subtle: #EDF0F7;
+      --text-primary: #1F1F1F;
+      --text-secondary: #444746;
+      --text-muted: #74777F;
+      --brand-primary: #0B57D0;
+      --brand-hover: #0842A0;
+      --brand-light: #D3E3FD;
+      --google-green: #1E8E3E;
+      --google-yellow: #F9AB00;
+      --google-red: #EA4335;
+      --success: #059669;
+      --success-light: #D1FAE5;
+      --warning: #D97706;
+      --warning-light: #FEF3C7;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 9999px;
+    }
+
+    [data-theme="dark"], .dark {
+      --bg-app: #111318;
+      --bg-surface: #1E2024;
+      --bg-surface-elevated: #282A2F;
+      --border-color: #333842;
+      --border-subtle: #242830;
+      --text-primary: #E3E3E3;
+      --text-secondary: #C4C7C5;
+      --text-muted: #8E918F;
+      --brand-primary: #7C9CFF;
+      --brand-hover: #A8BFFF;
+      --brand-light: rgba(124, 156, 255, 0.15);
+      --google-green: #34D399;
+      --google-yellow: #FBBF24;
+      --google-red: #F87171;
+      --success: #10B981;
+      --success-light: rgba(16, 185, 129, 0.15);
+      --warning: #F59E0B;
+      --warning-light: rgba(245, 158, 11, 0.15);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-app);
+      color: var(--text-primary);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Sticky Navbar */
+    .nav-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.85);
+      border-bottom: 1px solid var(--border-color);
+    }
+    [data-theme="dark"] .nav-header {
+      background: rgba(30, 32, 36, 0.85);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-back:hover {
+      background: var(--border-color);
+      transform: translateX(-2px);
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .brand-logo img {
+      width: 32px;
+      height: 32px;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-print, .btn-theme {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-print:hover, .btn-theme:hover {
+      background: var(--border-color);
+    }
+
+    /* Hero Banner */
+    .hero {
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-app) 100%);
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--brand-light);
+      color: var(--brand-primary);
+      border: 1px solid rgba(11, 87, 208, 0.2);
+      margin-bottom: 16px;
+    }
+    .page-title {
+      font-size: 2.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+    .lead-text {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      max-width: 860px;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    /* Meta Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .meta-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+    .meta-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+    .meta-value {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Main Layout: Sidebar & Content Stream */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      padding: 40px 0 80px;
+    }
+    @media (max-width: 900px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .sidebar { display: none; }
+    }
+
+    /* Sidebar TOC */
+    .sidebar {
+      position: sticky;
+      top: 90px;
+      height: fit-content;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sidebar-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .toc-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.84rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .toc-item:hover {
+      background: var(--bg-surface-elevated);
+      color: var(--brand-primary);
+      transform: translateX(3px);
+    }
+    .toc-num {
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: var(--brand-primary);
+      min-width: 18px;
+    }
+
+    /* Zero Data Selling Box */
+    .guarantee-box {
+      margin-top: 20px;
+      padding: 14px;
+      background: var(--success-light);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: var(--radius-md);
+      font-size: 0.82rem;
+      color: #065F46;
+      line-height: 1.45;
+    }
+    [data-theme="dark"] .guarantee-box {
+      color: #A7F3D0;
+    }
+
+    /* Content Cards */
+    .policy-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .policy-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      scroll-margin-top: 90px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .section-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--brand-light);
+      color: var(--brand-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    .body-p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      line-height: 1.68;
+    }
+    .list {
+      list-style: none;
+      margin: 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .list-item {
+      position: relative;
+      padding-left: 24px;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+    }
+    .list-item::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand-primary);
+    }
+
+    /* Callout Alert Boxes */
+    .callout {
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin: 18px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 0.94rem;
+    }
+    .callout.info {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+    .callout.success {
+      background: var(--success-light);
+      border: 1px solid var(--success);
+      color: #065F46;
+    }
+    [data-theme="dark"] .callout.success {
+      color: #A7F3D0;
+    }
+    .callout.warning {
+      background: var(--warning-light);
+      border: 1px solid var(--warning);
+      color: #92400E;
+    }
+    [data-theme="dark"] .callout.warning {
+      color: #FDE68A;
+    }
+
+    /* Contact Links Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.2s ease;
+    }
+    .contact-item:hover {
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+    }
+    .contact-val {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--brand-primary);
+    }
+
+    /* Footer */
+    .page-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      background: var(--bg-surface);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-links a:hover {
+      color: var(--brand-primary);
+    }
+
+    @media print {
+      .nav-header, .sidebar, .btn-print, .btn-theme, .btn-back, .page-footer { display: none !important; }
+      body { background: #FFFFFF; color: #000000; }
+      .main-grid { grid-template-columns: 1fr; padding: 0; }
+      .policy-card { border: none; box-shadow: none; padding: 0; margin-bottom: 24px; }
+      .hero { padding: 0 0 24px; background: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="nav-header">
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <a href="/" class="btn-back" title="Return to Homepage">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Back to Home</span>
+        </a>
+        <a href="/" class="brand-logo">
+          <img src="/favicon.png" alt="Xpense Cloud Logo" />
+          <span>Xpense Cloud</span>
+        </a>
+      </div>
+      <div class="nav-actions">
+        <button type="button" class="btn-print" onclick="window.print()" title="Print or save as PDF">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+          <span>Print</span>
+        </button>
+        <button type="button" class="btn-theme" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <span id="theme-toggle-icon">🌓</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        <span>OFFICIAL PRIVACY POLICY • GOOGLE PLAY &amp; APP STORE COMPLIANT</span>
+      </div>
+
+      <h1 class="page-title">Privacy Policy</h1>
+
+      <p class="lead-text">
+        Xpense ("Xpense", "we", "us", or "our") is a personal expense tracking application designed to help users record, organize, and understand their spending. This Privacy Policy explains how Xpense collects, uses, stores, shares, and protects information when you use the Xpense mobile application and related cloud services.
+      </p>
+
+      <div class="meta-grid">
+        <div class="meta-card">
+          <span class="meta-label">Last Updated</span>
+          <span class="meta-value">October 2026</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Security Architecture</span>
+          <span class="meta-value">On-Device AES-256 Hive + Cloud Sync</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Support Email</span>
+          <span class="meta-value"><a href="mailto:xpensecloud@gmail.com" style="color:var(--brand-primary);text-decoration:none;">xpensecloud@gmail.com</a></span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Store Compliance</span>
+          <span class="meta-value">Google Play &amp; App Store</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Grid: Sidebar TOC + Policy Stream -->
+  <div class="container">
+    <div class="main-grid">
+      <!-- Sticky Sidebar TOC -->
+      <aside class="sidebar">
+        <div class="sidebar-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Table of Contents</span>
+        </div>
+        <nav class="toc-list">
+          <a href="#info-collect" class="toc-item"><span class="toc-num">1</span><span>Information We Collect</span></a>
+          <a href="#expense-info" class="toc-item"><span class="toc-num">2</span><span>Expense &amp; Financial Info</span></a>
+          <a href="#device-storage" class="toc-item"><span class="toc-num">3</span><span>Device Storage &amp; Hive</span></a>
+          <a href="#cloud-sync" class="toc-item"><span class="toc-num">4</span><span>Cloud Synchronization</span></a>
+          <a href="#use-info" class="toc-item"><span class="toc-num">5</span><span>How We Use Information</span></a>
+          <a href="#google-firebase" class="toc-item"><span class="toc-num">6</span><span>Google Sign-In &amp; Firebase</span></a>
+          <a href="#advertising" class="toc-item"><span class="toc-num">7</span><span>Advertising (Google AdMob)</span></a>
+          <a href="#subscriptions" class="toc-item"><span class="toc-num">8</span><span>Subscriptions &amp; Payments</span></a>
+          <a href="#third-party" class="toc-item"><span class="toc-num">9</span><span>Third-Party Services</span></a>
+          <a href="#ml-features" class="toc-item"><span class="toc-num">10</span><span>ML Text Recognition</span></a>
+          <a href="#data-sharing" class="toc-item"><span class="toc-num">11</span><span>Data Sharing &amp; Disclosure</span></a>
+          <a href="#data-security" class="toc-item"><span class="toc-num">12</span><span>Data Security Safeguards</span></a>
+          <a href="#trip-integrity" class="toc-item"><span class="toc-num">13</span><span>Trip Member Integrity</span></a>
+          <a href="#device-permissions" class="toc-item"><span class="toc-num">14</span><span>Device Permissions</span></a>
+          <a href="#data-retention" class="toc-item"><span class="toc-num">15</span><span>Data Retention</span></a>
+          <a href="#account-deletion" class="toc-item"><span class="toc-num">16</span><span>Account &amp; Data Deletion</span></a>
+          <a href="#user-rights" class="toc-item"><span class="toc-num">17</span><span>Your Privacy Rights</span></a>
+          <a href="#children-privacy" class="toc-item"><span class="toc-num">18</span><span>Children's Privacy</span></a>
+          <a href="#international-transfers" class="toc-item"><span class="toc-num">19</span><span>International Processing</span></a>
+          <a href="#cookies" class="toc-item"><span class="toc-num">20</span><span>Cookies &amp; Identifiers</span></a>
+          <a href="#policy-changes" class="toc-item"><span class="toc-num">21</span><span>Policy Updates</span></a>
+          <a href="#contact-us" class="toc-item"><span class="toc-num">22</span><span>Contact Us</span></a>
+          <a href="#important-notice" class="toc-item"><span class="toc-num">23</span><span>Compliance Notice</span></a>
+        </nav>
+
+        <div class="guarantee-box">
+          <strong>Zero Data Selling:</strong> We strictly never sell, rent, or trade your personal financial records to third-party ad brokers.
+        </div>
+      </aside>
+
+      <!-- Main Policy Stream -->
+      <main class="policy-stream">
+        <!-- 1. Information We Collect -->
+        <article id="info-collect" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">1</div>
+            <h2 class="section-title">1. Information We Collect</h2>
+          </div>
+          <p class="body-p">
+            We collect and process only the information reasonably necessary to provide and improve the Xpense personal expense tracking service:
+          </p>
+          <ul class="list">
+            <li class="list-item"><strong>Firebase User Identifier (UID):</strong> Unique pseudonymized user ID to associate your synced records.</li>
+            <li class="list-item"><strong>Email Address:</strong> From Google Sign-In or Apple ID to secure account access.</li>
+            <li class="list-item"><strong>Display Name &amp; Avatar URL:</strong> If voluntarily provided by your authentication provider.</li>
+            <li class="list-item"><strong>Session Metadata:</strong> Authentication tokens necessary to maintain active cryptographic sessions.</li>
+            <li class="list-item"><strong>Trip Contacts (Optional):</strong> Only when you voluntarily pick a friend via the system contact picker to record trip splits or debts.</li>
+          </ul>
+          <div class="callout info">
+            <strong>Password Privacy:</strong> Xpense never receives, processes, or stores your external Google or Apple account passwords.
+          </div>
+        </article>
+
+        <!-- 2. Expense & Financial Information -->
+        <article id="expense-info" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">2</div>
+            <h2 class="section-title">2. Expense &amp; Financial Information</h2>
+          </div>
+          <p class="body-p">
+            Xpense allows you to voluntarily record personal financial records to track spending habits:
+          </p>
+          <ul class="list">
+            <li class="list-item">Transaction amounts, categories, subcategories, currencies, and timestamps.</li>
+            <li class="list-item">Payment methods (Cash, UPI, Credit/Debit Card, Bank Transfer) and type (Debited / Credited).</li>
+            <li class="list-item">Descriptions, notes, and receipt invoice image attachments.</li>
+            <li class="list-item">Category monthly budget caps and spending threshold alerts.</li>
+            <li class="list-item">Trip management records (group members, payer attribution, itemized split costs).</li>
+            <li class="list-item">Repeat subscriptions (recurring billing intervals, cycle alerts, and renewal dates).</li>
+            <li class="list-item">Lend and borrow reminder records (parties, due dates, settlement status).</li>
+          </ul>
+          <div class="callout warning">
+            <strong>Financial Disclaimer:</strong> Xpense does not provide financial, investment, accounting, or tax advice. Your records are purely for personal organization.
+          </div>
+        </article>
+
+        <!-- 3. Device Storage & Hive -->
+        <article id="device-storage" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">3</div>
+            <h2 class="section-title">3. Information Stored on Your Device</h2>
+          </div>
+          <p class="body-p">
+            Xpense operates on an offline-first architecture using <strong>AES-256 encrypted Hive local database storage</strong> on your device. Local data includes transactions, trips, repeat subscriptions, reminders, categories, and sync queues.
+          </p>
+          <p class="body-p">
+            <strong>Strict User Data Partitioning:</strong> Local database boxes are strictly partitioned per authenticated user ID. Data belonging to one user is encrypted and strictly isolated, preventing access by any other user account on the same device.
+          </p>
+        </article>
+
+        <!-- 4. Cloud Synchronization -->
+        <article id="cloud-sync" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">4</div>
+            <h2 class="section-title">4. Cloud Storage &amp; Synchronization</h2>
+          </div>
+          <p class="body-p">
+            When cloud synchronization is active, your transactions, trips, subscriptions, reminders, and categories are transmitted over encrypted TLS 1.3 / HTTPS connections to our secure Google Firebase Firestore backend.
+          </p>
+          <p class="body-p">
+            <strong>Offline-First Sync Policy:</strong> Even when cloud-enabled, you maintain full offline capabilities. Unsynced changes are queued in encrypted local storage and synchronized automatically when an active connection is restored.
+          </p>
+        </article>
+
+        <!-- 5. How We Use Information -->
+        <article id="use-info" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">5</div>
+            <h2 class="section-title">5. How We Use Your Information</h2>
+          </div>
+          <p class="body-p">
+            We use collected information strictly to deliver and enhance the core expense tracking service:
+          </p>
+          <ul class="list">
+            <li class="list-item">Authenticate your account and maintain active session security.</li>
+            <li class="list-item">Calculate spending analytics, trends, charts, and budget thresholds.</li>
+            <li class="list-item">Compute group trip split balances and equal per-person shares.</li>
+            <li class="list-item">Schedule local device notifications for repeat subscriptions and lend due dates.</li>
+            <li class="list-item">Store and synchronize data between your device and secure servers.</li>
+            <li class="list-item">Enable premium features and track subscription entitlements.</li>
+            <li class="list-item">Diagnose technical crashes and improve app reliability.</li>
+          </ul>
+        </article>
+
+        <!-- 6. Google Sign-In & Firebase -->
+        <article id="google-firebase" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">6</div>
+            <h2 class="section-title">6. Google Sign-In &amp; Firebase</h2>
+          </div>
+          <p class="body-p">
+            Xpense utilizes Google Sign-In and Firebase Authentication to verify user identities. Firebase Authentication securely processes tokens on our behalf following industry security standards.
+          </p>
+        </article>
+
+        <!-- 7. Advertising (Google AdMob) -->
+        <article id="advertising" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">7</div>
+            <h2 class="section-title">7. Advertising (Google AdMob)</h2>
+          </div>
+          <p class="body-p">
+            The free tier of Xpense may display third-party advertisements via Google AdMob. AdMob may process advertising identifiers and diagnostic metrics according to Google Ad policies.
+          </p>
+          <p class="body-p">
+            Subscribers to Xpense Premium enjoy an ad-free experience across the application.
+          </p>
+          <div class="callout success">
+            <strong>Zero Ad Selling:</strong> We strictly never sell or share your expense entries, receipts, or financial records with advertisers.
+          </div>
+        </article>
+
+        <!-- 8. Subscriptions & Payments -->
+        <article id="subscriptions" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">8</div>
+            <h2 class="section-title">8. Subscriptions &amp; Payments</h2>
+          </div>
+          <p class="body-p">
+            All purchases and subscriptions are handled entirely by Google Play Store or Apple App Store. Xpense does not collect or store full credit card numbers or banking credentials.
+          </p>
+        </article>
+
+        <!-- 9. Third-Party Services -->
+        <article id="third-party" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">9</div>
+            <h2 class="section-title">9. Third-Party Services</h2>
+          </div>
+          <p class="body-p">
+            Xpense integrates with trusted services including Google Firebase (Authentication &amp; Firestore), Google AdMob, Google ML Kit (on-device OCR), Google Play Billing, and Apple StoreKit.
+          </p>
+        </article>
+
+        <!-- 10. ML Text Recognition -->
+        <article id="ml-features" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">10</div>
+            <h2 class="section-title">10. Text Recognition &amp; ML Features</h2>
+          </div>
+          <p class="body-p">
+            Where optical text recognition is used (such as recognizing transaction details from receipt images), processing occurs locally on-device using Google ML Kit. Xpense does not retain or transmit image data beyond feature execution.
+          </p>
+        </article>
+
+        <!-- 11. Data Sharing & Disclosure -->
+        <article id="data-sharing" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">11</div>
+            <h2 class="section-title">11. Data Sharing &amp; Disclosure</h2>
+          </div>
+          <p class="body-p">
+            We do not sell, rent, or trade your personal information. We only share information with trusted infrastructure providers (cloud database hosting, authentication) strictly necessary to run the application.
+          </p>
+        </article>
+
+        <!-- 12. Data Security -->
+        <article id="data-security" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">12</div>
+            <h2 class="section-title">12. Data Security</h2>
+          </div>
+          <p class="body-p">
+            We implement modern technical and organizational safeguards designed to protect personal data:
+          </p>
+          <ul class="list">
+            <li class="list-item">AES-256 on-device database encryption for all local Hive storage boxes.</li>
+            <li class="list-item">Strict per-user data partition isolation preventing cross-account access on shared devices.</li>
+            <li class="list-item">Encrypted network communication via HTTPS and TLS 1.3.</li>
+            <li class="list-item">Secure OAuth 2.0 Bearer token storage in system Keystore / Keychain.</li>
+            <li class="list-item">Device biometric protection (Face ID / Fingerprint) with auto-lock timers.</li>
+          </ul>
+        </article>
+
+        <!-- 13. Group Expenses & Trip Member Integrity -->
+        <article id="trip-integrity" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">13</div>
+            <h2 class="section-title">13. Group Expenses &amp; Trip Member Integrity</h2>
+          </div>
+          <p class="body-p">
+            In shared Trip expense management, accurate financial accounting and dispute prevention are paramount.
+          </p>
+          <p class="body-p">
+            <strong>Transaction Protection Policy:</strong> A group member who has recorded or paid for any transaction within a trip cannot be removed from that trip. This ensures an immutable audit trail and fair settlement calculations for all participants.
+          </p>
+        </article>
+
+        <!-- 14. Device Permissions -->
+        <article id="device-permissions" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">14</div>
+            <h2 class="section-title">14. Device Permissions</h2>
+          </div>
+          <p class="body-p">
+            Xpense may request the following device permissions to enable specific user features:
+          </p>
+          <ul class="list">
+            <li class="list-item"><strong>Notifications:</strong> Used to deliver timely reminders for repeat subscriptions and lend due dates.</li>
+            <li class="list-item"><strong>Biometrics (Face ID / Fingerprint):</strong> Used purely on-device to lock and unlock the app.</li>
+            <li class="list-item"><strong>Contacts (Optional):</strong> Used only when you tap "Pick from Contacts" to populate a trip member or reminder name. No contact lists are uploaded or stored remotely.</li>
+          </ul>
+        </article>
+
+        <!-- 15. Data Retention -->
+        <article id="data-retention" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">15</div>
+            <h2 class="section-title">15. Data Retention</h2>
+          </div>
+          <p class="body-p">
+            We retain your account and financial data for as long as your account remains active. When you delete records or delete your account, data is purged from active databases immediately.
+          </p>
+        </article>
+
+        <!-- 16. Account & Data Deletion -->
+        <article id="account-deletion" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">16</div>
+            <h2 class="section-title">16. Account &amp; Data Deletion</h2>
+          </div>
+          <p class="body-p">
+            You have full control over your data and may permanently delete your account at any time inside the app via <strong>Settings &rarr; Delete Account</strong>, or via our web-based <a href="/delete-account" style="color:var(--brand-primary);font-weight:700;text-decoration:underline;">Account Deletion Portal</a>.
+          </p>
+          <p class="body-p">
+            <strong>Permanent Cloud &amp; Local Purge:</strong> Confirming account deletion permanently purges your user profile, transactions, trips, repeat subscriptions, and reminders from cloud databases, and instantly empties all local encrypted Hive storage boxes in 0 seconds.
+          </p>
+          <div class="callout warning">
+            <strong>Permanent Deletion:</strong> Account deletion is irreversible. Your records and backups cannot be recovered after deletion.
+          </div>
+        </article>
+
+        <!-- 17. Your Choices & Privacy Rights -->
+        <article id="user-rights" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">17</div>
+            <h2 class="section-title">17. Your Choices &amp; Privacy Rights</h2>
+          </div>
+          <p class="body-p">
+            Depending on your jurisdiction (such as GDPR, CCPA/CPRA), you have rights to access your personal data, rectify inaccuracies, request full erasure, or export your financial records to CSV, Excel, or PDF.
+          </p>
+        </article>
+
+        <!-- 18. Children's Privacy -->
+        <article id="children-privacy" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">18</div>
+            <h2 class="section-title">18. Children's Privacy</h2>
+          </div>
+          <p class="body-p">
+            Xpense is not directed to children under 13 (or under 16 in certain jurisdictions), and we do not knowingly collect personal information from children.
+          </p>
+        </article>
+
+        <!-- 19. International Data Processing -->
+        <article id="international-transfers" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">19</div>
+            <h2 class="section-title">19. International Data Processing</h2>
+          </div>
+          <p class="body-p">
+            Our cloud infrastructure providers operate data centers in multiple regions. We ensure appropriate technical safeguards protect data during cross-border transit.
+          </p>
+        </article>
+
+        <!-- 20. Cookies & Local Identifiers -->
+        <article id="cookies" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">20</div>
+            <h2 class="section-title">20. Cookies &amp; Local Identifiers</h2>
+          </div>
+          <p class="body-p">
+            The mobile application uses local identifiers and tokens stored on-device to maintain authenticated sessions and app preferences.
+          </p>
+        </article>
+
+        <!-- 21. Changes to This Privacy Policy -->
+        <article id="policy-changes" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">21</div>
+            <h2 class="section-title">21. Changes to This Privacy Policy</h2>
+          </div>
+          <p class="body-p">
+            We may update this Privacy Policy from time to time. We will notify you by updating the "Last Updated" date and posting the revised policy inside the application and on this website.
+          </p>
+        </article>
+
+        <!-- 22. Contact Us -->
+        <article id="contact-us" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">22</div>
+            <h2 class="section-title">22. Contact Us</h2>
+          </div>
+          <p class="body-p">
+            If you have questions, privacy concerns, or requests regarding this Privacy Policy, please contact our support team:
+          </p>
+          <div class="contact-grid">
+            <a href="mailto:xpensecloud@gmail.com" class="contact-item">
+              <div>
+                <div style="font-size:0.76rem;color:var(--text-muted);">Direct Support Email</div>
+                <div class="contact-val">xpensecloud@gmail.com</div>
+              </div>
+            </a>
+            <a href="https://xpense-cloud.in" class="contact-item">
+              <div>
+                <div style="font-size:0.76rem;color:var(--text-muted);">Official Website</div>
+                <div class="contact-val">xpense-cloud.in</div>
+              </div>
+            </a>
+            <a href="/terms" class="contact-item">
+              <div>
+                <div style="font-size:0.76rem;color:var(--text-muted);">Terms of Service</div>
+                <div class="contact-val">Terms &amp; Conditions</div>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <!-- 23. Important Compliance Notice -->
+        <article id="important-notice" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">23</div>
+            <h2 class="section-title">23. Important Compliance Notice</h2>
+          </div>
+          <p class="body-p">
+            This Privacy Policy describes Xpense’s data practices and complies with Google Play and Apple App Store privacy disclosure standards.
+          </p>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border-color);font-size:0.85rem;color:var(--text-muted);">
+            <strong>Last Updated:</strong> October 2026
+          </div>
+        </article>
+      </main>
+    </div>
+  </div>
+
+  <!-- Page Footer -->
+  <footer class="page-footer">
+    <div class="container footer-content">
+      <div>
+        &copy; 2026 Xpense Cloud. All rights reserved. Package ID: <code>com.xpense.cloud</code>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/delete-account">Delete Account</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', cur);
+      if (cur === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      localStorage.setItem('xpense-theme', cur);
+      var icon = document.getElementById('theme-toggle-icon');
+      if (icon) {
+        icon.innerHTML = cur === 'dark' ? '☀️' : '🌙';
+      }
+    }
+  </script>
+</body>
+</html>

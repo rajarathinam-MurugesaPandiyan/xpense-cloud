@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Terms &amp; Conditions | Xpense Cloud</title>
+  <meta name="description" content="Official Terms &amp; Conditions governing access and use of the Xpense mobile application and cloud services." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    (function() {
+      try {
+        var stored = localStorage.getItem('xpense-theme') || 'system';
+        var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = stored === 'dark' || (stored === 'system' && systemDark);
+        var resolved = isDark ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', resolved);
+        if (isDark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    :root {
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --bg-app: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-surface-elevated: #F0F4F9;
+      --border-color: #E0E2EC;
+      --border-subtle: #EDF0F7;
+      --text-primary: #1F1F1F;
+      --text-secondary: #444746;
+      --text-muted: #74777F;
+      --brand-primary: #0B57D0;
+      --brand-hover: #0842A0;
+      --brand-light: #D3E3FD;
+      --google-green: #1E8E3E;
+      --google-yellow: #F9AB00;
+      --google-red: #EA4335;
+      --success: #059669;
+      --success-light: #D1FAE5;
+      --warning: #D97706;
+      --warning-light: #FEF3C7;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 9999px;
+    }
+
+    [data-theme="dark"], .dark {
+      --bg-app: #111318;
+      --bg-surface: #1E2024;
+      --bg-surface-elevated: #282A2F;
+      --border-color: #333842;
+      --border-subtle: #242830;
+      --text-primary: #E3E3E3;
+      --text-secondary: #C4C7C5;
+      --text-muted: #8E918F;
+      --brand-primary: #7C9CFF;
+      --brand-hover: #A8BFFF;
+      --brand-light: rgba(124, 156, 255, 0.15);
+      --google-green: #34D399;
+      --google-yellow: #FBBF24;
+      --google-red: #F87171;
+      --success: #10B981;
+      --success-light: rgba(16, 185, 129, 0.15);
+      --warning: #F59E0B;
+      --warning-light: rgba(245, 158, 11, 0.15);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-app);
+      color: var(--text-primary);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Sticky Navbar */
+    .nav-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.85);
+      border-bottom: 1px solid var(--border-color);
+    }
+    [data-theme="dark"] .nav-header {
+      background: rgba(30, 32, 36, 0.85);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .btn-back:hover {
+      background: var(--border-color);
+      transform: translateX(-2px);
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .brand-logo img {
+      width: 32px;
+      height: 32px;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-print, .btn-theme {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-print:hover, .btn-theme:hover {
+      background: var(--border-color);
+    }
+
+    /* Hero Banner */
+    .hero {
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border-color);
+      background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-app) 100%);
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--brand-light);
+      color: var(--brand-primary);
+      border: 1px solid rgba(11, 87, 208, 0.2);
+      margin-bottom: 16px;
+    }
+    .page-title {
+      font-size: 2.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+    .lead-text {
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+      max-width: 860px;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    /* Meta Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .meta-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+    .meta-label {
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+    .meta-value {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Main Layout */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      padding: 40px 0 80px;
+    }
+    @media (max-width: 900px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .sidebar { display: none; }
+    }
+
+    /* Sidebar TOC */
+    .sidebar {
+      position: sticky;
+      top: 90px;
+      height: fit-content;
+      max-height: calc(100vh - 110px);
+      overflow-y: auto;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .sidebar-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toc-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .toc-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 0.84rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .toc-item:hover {
+      background: var(--bg-surface-elevated);
+      color: var(--brand-primary);
+      transform: translateX(3px);
+    }
+    .toc-num {
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: var(--brand-primary);
+      min-width: 18px;
+    }
+
+    /* Policy Stream */
+    .policy-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .policy-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      scroll-margin-top: 90px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .section-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--brand-light);
+      color: var(--brand-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    .body-p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 16px;
+      line-height: 1.68;
+    }
+    .list {
+      list-style: none;
+      margin: 16px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .list-item {
+      position: relative;
+      padding-left: 24px;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+    }
+    .list-item::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand-primary);
+    }
+
+    .callout {
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin: 18px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 0.94rem;
+    }
+    .callout.warning {
+      background: var(--warning-light);
+      border: 1px solid var(--warning);
+      color: #92400E;
+    }
+    [data-theme="dark"] .callout.warning {
+      color: #FDE68A;
+    }
+
+    /* Footer */
+    .page-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0;
+      background: var(--bg-surface);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer-links a:hover {
+      color: var(--brand-primary);
+    }
+
+    @media print {
+      .nav-header, .sidebar, .btn-print, .btn-theme, .btn-back, .page-footer { display: none !important; }
+      body { background: #FFFFFF; color: #000000; }
+      .main-grid { grid-template-columns: 1fr; padding: 0; }
+      .policy-card { border: none; box-shadow: none; padding: 0; margin-bottom: 24px; }
+      .hero { padding: 0 0 24px; background: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="nav-header">
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <a href="/" class="btn-back" title="Return to Homepage">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Back to Home</span>
+        </a>
+        <a href="/" class="brand-logo">
+          <img src="/favicon.png" alt="Xpense Cloud Logo" />
+          <span>Xpense Cloud</span>
+        </a>
+      </div>
+      <div class="nav-actions">
+        <button type="button" class="btn-print" onclick="window.print()" title="Print or save as PDF">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+          <span>Print</span>
+        </button>
+        <button type="button" class="btn-theme" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <span id="theme-toggle-icon">🌓</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section class="hero">
+    <div class="container">
+      <div class="badge-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span>OFFICIAL TERMS &amp; CONDITIONS • APPLICABLE TO ALL USERS</span>
+      </div>
+
+      <h1 class="page-title">Terms &amp; Conditions</h1>
+
+      <p class="lead-text">
+        These Terms &amp; Conditions govern your access to and use of the Xpense mobile application, website, and related financial tracking services. By accessing or using Xpense, you agree to be bound by these Terms.
+      </p>
+
+      <div class="meta-grid">
+        <div class="meta-card">
+          <span class="meta-label">Last Updated</span>
+          <span class="meta-value">October 2026</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Architecture</span>
+          <span class="meta-value">On-Device AES-256 Hive + Cloud Sync</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Support Email</span>
+          <span class="meta-value"><a href="mailto:xpensecloud@gmail.com" style="color:var(--brand-primary);text-decoration:none;">xpensecloud@gmail.com</a></span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">Website</span>
+          <span class="meta-value"><a href="https://xpense-cloud.in" style="color:var(--brand-primary);text-decoration:none;">xpense-cloud.in</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Grid -->
+  <div class="container">
+    <div class="main-grid">
+      <!-- Sticky Sidebar TOC -->
+      <aside class="sidebar">
+        <div class="sidebar-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>Table of Contents</span>
+        </div>
+        <nav class="toc-list">
+          <a href="#about-xpense" class="toc-item"><span class="toc-num">1</span><span>About Xpense</span></a>
+          <a href="#eligibility" class="toc-item"><span class="toc-num">2</span><span>Eligibility</span></a>
+          <a href="#user-accounts" class="toc-item"><span class="toc-num">3</span><span>User Accounts</span></a>
+          <a href="#your-data" class="toc-item"><span class="toc-num">4</span><span>Your Data &amp; Ownership</span></a>
+          <a href="#storage-sync" class="toc-item"><span class="toc-num">5</span><span>Storage &amp; Cloud Sync</span></a>
+          <a href="#financial-disclaimer" class="toc-item"><span class="toc-num">6</span><span>Financial Disclaimer</span></a>
+          <a href="#premium-subscriptions" class="toc-item"><span class="toc-num">7</span><span>Subscriptions &amp; Billing</span></a>
+          <a href="#trip-rules" class="toc-item"><span class="toc-num">8</span><span>Group Trip Rules</span></a>
+          <a href="#account-deletion-effect" class="toc-item"><span class="toc-num">9</span><span>Account Deletion Effect</span></a>
+          <a href="#warranty-disclaimer" class="toc-item"><span class="toc-num">10</span><span>Warranty &amp; Liability</span></a>
+          <a href="#contact-us" class="toc-item"><span class="toc-num">11</span><span>Contact Information</span></a>
+        </nav>
+      </aside>
+
+      <!-- Main Policy Stream -->
+      <main class="policy-stream">
+        <article id="about-xpense" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">1</div>
+            <h2 class="section-title">1. About Xpense</h2>
+          </div>
+          <p class="body-p">
+            Xpense is a personal expense management application that helps individuals record transactions, manage budgets, track recurring subscriptions, split group travel expenses, and analyze spending patterns.
+          </p>
+        </article>
+
+        <article id="eligibility" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">2</div>
+            <h2 class="section-title">2. Eligibility</h2>
+          </div>
+          <p class="body-p">
+            You must be at least 13 years old (or 16 where required by applicable local law) to use Xpense. By using the app, you represent that you meet these eligibility requirements.
+          </p>
+        </article>
+
+        <article id="user-accounts" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">3</div>
+            <h2 class="section-title">3. User Accounts &amp; Registration</h2>
+          </div>
+          <p class="body-p">
+            Account registration is facilitated through federated Google Sign-In or Apple ID authentication. You are responsible for maintaining the confidentiality of your device and authentication credentials.
+          </p>
+        </article>
+
+        <article id="your-data" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">4</div>
+            <h2 class="section-title">4. Your Data &amp; Ownership</h2>
+          </div>
+          <p class="body-p">
+            You retain 100% intellectual property ownership of all personal financial transactions, budget logs, trip records, and notes you record within Xpense. We never sell, monetize, or broker your personal financial records.
+          </p>
+        </article>
+
+        <article id="storage-sync" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">5</div>
+            <h2 class="section-title">5. Local Storage &amp; Cloud Sync</h2>
+          </div>
+          <p class="body-p">
+            Xpense utilizes an offline-first architecture powered by on-device AES-256 encrypted Hive boxes. Cloud synchronization transmits data over TLS 1.3 / HTTPS to our Firebase Firestore cloud infrastructure.
+          </p>
+        </article>
+
+        <article id="financial-disclaimer" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">6</div>
+            <h2 class="section-title">6. Financial Disclaimer (No Financial Advice)</h2>
+          </div>
+          <div class="callout warning">
+            <strong>Disclaimer:</strong> Xpense is solely a record-keeping and organizational tool. It does not provide certified financial, accounting, investment, legal, or tax advice. You are solely responsible for verifying your financial figures.
+          </div>
+        </article>
+
+        <article id="premium-subscriptions" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">7</div>
+            <h2 class="section-title">7. Premium Features &amp; Store Subscriptions</h2>
+          </div>
+          <p class="body-p">
+            Subscriptions and purchases are processed directly by Google Play or Apple App Store. Subscription renewal, cancellation, and refund requests are governed by Google Play or Apple App Store platform policies.
+          </p>
+        </article>
+
+        <article id="trip-rules" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">8</div>
+            <h2 class="section-title">8. Group Trips &amp; Member Transaction Rules</h2>
+          </div>
+          <p class="body-p">
+            To preserve accurate split math and audit records, a participant who has logged or paid for a transaction in a shared trip cannot be deleted from that trip ledger until the ledger is settled.
+          </p>
+        </article>
+
+        <article id="account-deletion-effect" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">9</div>
+            <h2 class="section-title">9. Account Deletion &amp; Data Removal</h2>
+          </div>
+          <p class="body-p">
+            You may permanently delete your account at any time via <strong>Settings &rarr; Delete Account</strong> in the mobile app, or via our web portal at <a href="/delete-account" style="color:var(--brand-primary);font-weight:700;">/delete-account</a>. Deletion is instantaneous and permanent.
+          </p>
+        </article>
+
+        <article id="warranty-disclaimer" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">10</div>
+            <h2 class="section-title">10. Disclaimer of Warranties &amp; Limitation of Liability</h2>
+          </div>
+          <p class="body-p">
+            Xpense is provided "AS IS" and "AS AVAILABLE" without warranties of any kind. Under no circumstances shall Xpense or its developers be liable for indirect, incidental, or consequential damages resulting from data loss or application downtime.
+          </p>
+        </article>
+
+        <article id="contact-us" class="policy-card">
+          <div class="section-header">
+            <div class="section-icon-box">11</div>
+            <h2 class="section-title">11. Contact Information</h2>
+          </div>
+          <p class="body-p">
+            If you have questions regarding these Terms &amp; Conditions, please reach out to:
+          </p>
+          <p class="body-p">
+            <strong>Email:</strong> <a href="mailto:xpensecloud@gmail.com" style="color:var(--brand-primary);font-weight:700;">xpensecloud@gmail.com</a><br />
+            <strong>Website:</strong> <a href="https://xpense-cloud.in" style="color:var(--brand-primary);font-weight:700;">https://xpense-cloud.in</a>
+          </p>
+        </article>
+      </main>
+    </div>
+  </div>
+
+  <!-- Page Footer -->
+  <footer class="page-footer">
+    <div class="container footer-content">
+      <div>
+        &copy; 2026 Xpense Cloud. All rights reserved. Package ID: <code>com.xpense.cloud</code>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/delete-account">Delete Account</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', cur);
+      if (cur === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      localStorage.setItem('xpense-theme', cur);
+      var icon = document.getElementById('theme-toggle-icon');
+      if (icon) {
+        icon.innerHTML = cur === 'dark' ? '☀️' : '🌙';
+      }
+    }
+  </script>
+</body>
+</html>
